@@ -25,8 +25,8 @@ const Cart: React.FC<CartProps> = ({
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center px-4 py-12">
         <div className="text-center max-w-md">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 border-2 border-teal-100">
-            <div className="bg-gradient-to-br from-teal-400 to-emerald-500 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 border-2 border-blue-100">
+            <div className="bg-gradient-to-br from-blue-400 to-blue-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
               <ShoppingBag className="w-12 h-12 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
@@ -112,7 +112,7 @@ const Cart: React.FC<CartProps> = ({
                           {item.product.name}
                         </h3>
                         {item.variation && (
-                          <p className="text-xs md:text-sm text-teal-600 font-medium">
+                          <p className="text-xs md:text-sm text-blue-600 font-medium">
                             Size: {item.variation.name}
                           </p>
                         )}
@@ -138,7 +138,7 @@ const Cart: React.FC<CartProps> = ({
                           onClick={() => updateQuantity(index, item.quantity - 1)}
                           className="p-1.5 md:p-2 hover:bg-blue-50 transition-colors rounded-l-xl"
                         >
-                          <Minus className="w-3 h-3 md:w-4 md:h-4 text-teal-600" />
+                          <Minus className="w-3 h-3 md:w-4 md:h-4 text-blue-600" />
                         </button>
                         <span className="px-3 md:px-4 py-1.5 md:py-2 font-bold text-gray-800 min-w-[32px] md:min-w-[40px] text-center text-sm md:text-base">
                           {item.quantity}
@@ -147,7 +147,7 @@ const Cart: React.FC<CartProps> = ({
                           onClick={() => updateQuantity(index, item.quantity + 1)}
                           className="p-1.5 md:p-2 hover:bg-blue-50 transition-colors rounded-r-xl"
                         >
-                          <Plus className="w-3 h-3 md:w-4 md:h-4 text-teal-600" />
+                          <Plus className="w-3 h-3 md:w-4 md:h-4 text-blue-600" />
                         </button>
                       </div>
 
@@ -168,7 +168,7 @@ const Cart: React.FC<CartProps> = ({
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-teal-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-blue-100">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
                 Order Summary
                 <Sparkles className="w-5 h-5 text-yellow-500" />
@@ -181,7 +181,7 @@ const Cart: React.FC<CartProps> = ({
                 </div>
                 <div className="flex justify-between text-gray-700 text-xs md:text-sm italic">
                   <span>Shipping</span>
-                  <span className="text-teal-600 font-medium">To be discussed</span>
+                  <span className="text-blue-600 font-medium">To be discussed</span>
                 </div>
 
                 <div className="border-t-2 border-dashed border-gray-200 pt-3 mt-4">

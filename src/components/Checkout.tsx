@@ -114,9 +114,8 @@ Please confirm this order. Thank you!
     `.trim();
 
     // Send order to Facebook Messenger
-    const facebookPageId = '61573812453289';
     const encodedMessage = encodeURIComponent(orderDetails);
-    const messengerUrl = `https://m.me/${facebookPageId}?text=${encodedMessage}`;
+    const messengerUrl = `https://m.me/renalyndv?text=${encodedMessage}`;
     
     // Open Facebook Messenger
     window.open(messengerUrl, '_blank');
@@ -130,11 +129,11 @@ Please confirm this order. Thank you!
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center px-4 py-12">
         <div className="max-w-2xl w-full">
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 text-center border-2 border-green-100">
-            <div className="bg-gradient-to-br from-green-400 to-green-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce">
+            <div className="bg-gradient-to-br from-blue-400 to-blue-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce">
               <ShieldCheck className="w-14 h-14 text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-2 flex-wrap">
-              <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Order Sent!</span>
+              <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Order Sent!</span>
               <Sparkles className="w-7 h-7 text-yellow-500" />
             </h1>
             <p className="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
@@ -143,7 +142,7 @@ Please confirm this order. Thank you!
               We will confirm your order and send you the payment details shortly!
             </p>
             
-            <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-6 mb-8 text-left border-2 border-teal-100">
+            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-6 mb-8 text-left border-2 border-blue-100">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                 What happens next? 
                 <Sparkles className="w-5 h-5 text-yellow-500" />
@@ -205,7 +204,7 @@ Please confirm this order. Thank you!
             {/* Main Form */}
             <div className="lg:col-span-2 space-y-4 md:space-y-6">
               {/* Customer Information */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-teal-100">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-blue-100">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
                   <div className="bg-gradient-to-br from-blue-400 to-purple-500 p-2 rounded-xl">
                     <Package className="w-5 h-5 md:w-6 md:h-6 text-white" />
@@ -362,7 +361,7 @@ Please confirm this order. Thank you!
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900 text-sm">{item.product.name}</h4>
                           {item.variation && (
-                            <p className="text-xs text-teal-600 mt-1">{item.variation.name}</p>
+                            <p className="text-xs text-blue-600 mt-1">{item.variation.name}</p>
                           )}
                           <p className="text-xs text-gray-500 mt-1">
                             {item.product.purity_percentage}% Purity
@@ -384,12 +383,12 @@ Please confirm this order. Thank you!
                   </div>
                   <div className="flex justify-between text-gray-600 text-xs">
                     <span>Shipping</span>
-                    <span className="font-medium text-teal-600">To be discussed via chat</span>
+                    <span className="font-medium text-blue-600">To be discussed via chat</span>
                   </div>
                   <div className="border-t-2 border-gray-200 pt-3">
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-gray-900">Total</span>
-                      <span className="text-2xl font-bold text-teal-600">
+                      <span className="text-2xl font-bold text-blue-600">
                         ₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                       </span>
                     </div>
@@ -420,7 +419,7 @@ Please confirm this order. Thank you!
 
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 flex items-center gap-2">
           Payment
-          <CreditCard className="w-6 h-6 md:w-7 md:h-7 text-teal-600" />
+          <CreditCard className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
@@ -429,7 +428,7 @@ Please confirm this order. Thank you!
             {/* Payment Method Selection */}
             <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-green-100">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
-                <div className="bg-gradient-to-br from-green-400 to-green-600 p-2 rounded-xl">
+                <div className="bg-gradient-to-br from-blue-400 to-blue-600 p-2 rounded-xl">
                   <CreditCard className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 Payment Method
@@ -447,8 +446,8 @@ Please confirm this order. Thank you!
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
-                        <CreditCard className="w-6 h-6 text-teal-600" />
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <CreditCard className="w-6 h-6 text-blue-600" />
                       </div>
                       <div className="text-left">
                         <p className="font-semibold text-gray-900">{method.name}</p>
@@ -470,7 +469,7 @@ Please confirm this order. Thank you!
                   <div className="space-y-2 text-sm text-gray-700 mb-4">
                     <p><strong>Account Number:</strong> {paymentMethodInfo.account_number}</p>
                     <p><strong>Account Name:</strong> {paymentMethodInfo.account_name}</p>
-                    <p><strong>Amount to Pay:</strong> <span className="text-xl font-bold text-teal-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span></p>
+                    <p><strong>Amount to Pay:</strong> <span className="text-xl font-bold text-blue-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span></p>
                   </div>
                   
                   {paymentMethodInfo.qr_code_url && (
@@ -506,7 +505,7 @@ Please confirm this order. Thank you!
 
             <button
               onClick={handlePlaceOrder}
-              className="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2"
             >
               <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
               Send Order via Messenger
@@ -515,7 +514,7 @@ Please confirm this order. Thank you!
 
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-teal-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-blue-100">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
                 Final Summary
                 <Sparkles className="w-5 h-5 text-yellow-500" />

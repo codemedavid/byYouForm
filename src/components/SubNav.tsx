@@ -16,14 +16,18 @@ const iconMap: { [key: string]: React.ReactElement } = {
   Brain: <Brain className="w-5 h-5" />,
 };
 
-// Cute gradient colors for each category
+// Professional gradient colors for each category
 const categoryColors: { [key: string]: string } = {
-  all: 'from-teal-400 to-teal-600',
-  research: 'from-emerald-400 to-emerald-600',
-  cosmetic: 'from-green-400 to-green-600',
-  performance: 'from-orange-400 to-orange-600',
-  healing: 'from-red-400 to-red-600',
-  cognitive: 'from-cyan-400 to-cyan-600',
+  all: 'from-blue-500 to-blue-700',
+  'weight-management': 'from-blue-400 to-blue-600',
+  'anti-aging': 'from-indigo-400 to-indigo-600',
+  recovery: 'from-sky-400 to-sky-600',
+  wellness: 'from-cyan-400 to-cyan-600',
+  research: 'from-blue-400 to-blue-600',
+  cosmetic: 'from-indigo-400 to-indigo-600',
+  performance: 'from-sky-400 to-sky-600',
+  healing: 'from-cyan-400 to-cyan-600',
+  cognitive: 'from-blue-500 to-blue-700',
 };
 
 const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) => {

@@ -7,23 +7,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark Blue-Green and Light Green Theme
+        // Professional Light Blue and Dark Blue Theme
         primary: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
+          50: '#eff6ff',   // Lightest blue
+          100: '#dbeafe',  // Very light blue
+          200: '#bfdbfe',  // Light blue
+          300: '#93c5fd',  // Medium light blue
+          400: '#60a5fa',  // Light blue (accent)
+          500: '#3b82f6',  // Standard blue
+          600: '#2563eb',  // Dark blue (primary)
+          700: '#1d4ed8',  // Darker blue
+          800: '#1e40af',  // Very dark blue
+          900: '#1e3a8a',  // Darkest blue
         },
         accent: {
-          cyan: '#06b6d4',
-          sky: '#22d3ee',
-          light: '#d1fae5',
+          light: '#60a5fa',   // Light blue accent
+          DEFAULT: '#3b82f6', // Standard blue
+          dark: '#2563eb',    // Dark blue accent
         },
         gray: {
           50: '#f9fafb',
@@ -42,9 +42,9 @@ export default {
         inter: ['Inter', 'sans-serif'],
       },
       boxShadow: {
-        'soft': '0 2px 8px rgba(13, 148, 136, 0.08)',
-        'medium': '0 4px 16px rgba(13, 148, 136, 0.12)',
-        'large': '0 8px 24px rgba(13, 148, 136, 0.16)',
+        'soft': '0 2px 8px rgba(37, 99, 235, 0.08)',
+        'medium': '0 4px 16px rgba(37, 99, 235, 0.12)',
+        'large': '0 8px 24px rgba(37, 99, 235, 0.16)',
       },
       animation: {
         'fadeIn': 'fadeIn 0.4s ease-out',

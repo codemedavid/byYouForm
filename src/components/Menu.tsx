@@ -58,7 +58,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems }) => {
         />
       )}
       
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-emerald-50">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-blue-100">
         <Hero />
       
       <div className="container mx-auto px-3 md:px-4 py-4 md:py-6 lg:py-8">
@@ -95,7 +95,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems }) => {
         <div className="mb-4 md:mb-6 flex items-center gap-1.5 md:gap-2">
           <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-yellow-500" />
           <p className="text-gray-700 font-medium text-xs md:text-sm lg:text-base">
-            Showing <span className="font-bold text-teal-600">{sortedProducts.length}</span> premium product{sortedProducts.length !== 1 ? 's' : ''}
+            Showing <span className="font-bold text-blue-600">{sortedProducts.length}</span> premium product{sortedProducts.length !== 1 ? 's' : ''}
           </p>
         </div>
 
@@ -103,8 +103,8 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems }) => {
         {sortedProducts.length === 0 ? (
           <div className="text-center py-10 md:py-16 lg:py-20">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-10 lg:p-12 max-w-md mx-auto border-2 border-gray-100">
-              <div className="bg-gradient-to-br from-teal-100 to-emerald-100 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
-                <Package className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-teal-600" />
+              <div className="bg-gradient-to-br from-blue-100 to-blue-200 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <Package className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-blue-600" />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-2 md:mb-3">No products found</h3>
               <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">

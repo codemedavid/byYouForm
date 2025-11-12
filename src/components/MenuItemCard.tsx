@@ -45,9 +45,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
         className="absolute inset-0 z-10 cursor-pointer"
         title="Tap for full details"
       >
-        <div className="absolute inset-0 bg-teal-600/0 group-hover:bg-teal-600/10 transition-all duration-200 flex items-center justify-center">
+        <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-all duration-200 flex items-center justify-center">
           <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg transform scale-95 group-hover:scale-100 transition-transform">
-            <p className="text-sm font-bold text-teal-600 flex items-center gap-2">
+            <p className="text-sm font-bold text-blue-600 flex items-center gap-2">
               👁️ Tap for full details
             </p>
           </div>
@@ -55,7 +55,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
       </div>
 
       {/* Product Image */}
-      <div className="relative h-28 sm:h-36 md:h-48 bg-gradient-to-br from-teal-50 to-teal-100 overflow-hidden">
+      <div className="relative h-28 sm:h-36 md:h-48 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
         {product.image_url ? (
           <img 
             src={product.image_url} 
@@ -93,8 +93,8 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
         {/* Tap for Details Badge - Elegant floating design */}
         <div className="absolute bottom-1 sm:bottom-1.5 md:bottom-2 left-1/2 transform -translate-x-1/2 pointer-events-none">
-          <div className="bg-white/95 backdrop-blur-md px-2 py-1 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full shadow-md sm:shadow-lg border border-teal-200 animate-pulse-subtle">
-            <p className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs font-semibold text-teal-700 flex items-center gap-0.5 sm:gap-1 whitespace-nowrap">
+          <div className="bg-white/95 backdrop-blur-md px-2 py-1 sm:px-2.5 sm:py-1 md:px-3 md:py-1.5 rounded-full shadow-md sm:shadow-lg border border-blue-200 animate-pulse-subtle">
+            <p className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs font-semibold text-blue-700 flex items-center gap-0.5 sm:gap-1 whitespace-nowrap">
               <span className="text-[10px] sm:text-xs">👆</span> 
               <span className="hidden xs:inline">Tap for details</span>
               <span className="xs:hidden">Tap</span>
