@@ -89,17 +89,21 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       return;
     }
 
-    // Additional check: verify file name is not a placeholder
-    // Some mobile browsers might set placeholder names like "image.jpg" or "take photo"
-    const fileName = file.name.toLowerCase();
-    const placeholderNames = ['image.jpg', 'image.png', 'image.jpeg', 'take photo', 'camera', 'photo'];
-    if (placeholderNames.some(placeholder => fileName.includes(placeholder)) && file.size < 100) {
-      alert('❌ Please select an actual image file. The selected file appears to be a placeholder.');
-      // Reset input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+    // Additional check: verify file is not a placeholder
+    // Some mobile browsers might create placeholder files with very small sizes
+    // Only reject if file is suspiciously small (less than 1KB) which indicates a placeholder
+    if (file.size < 1024) {
+      // Check if filename suggests it's a placeholder
+      const fileName = file.name.toLowerCase();
+      const suspiciousNames = ['take photo', 'camera', 'photo.jpg', 'image.jpg'];
+      if (suspiciousNames.some(name => fileName === name || fileName.includes(name))) {
+        alert('❌ Please select an actual image file. The selected file appears to be a placeholder. Make sure to take a photo or select an image from your gallery.');
+        // Reset input
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+        return;
       }
-      return;
     }
 
     // Validate file type - be more lenient for mobile devices
@@ -217,7 +221,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         onChange={handleFileSelect}
         className="hidden"
         disabled={uploading}
-        capture="environment"
       />
 
       {!displayImage && (

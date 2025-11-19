@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ShieldCheck, Package, CreditCard, Sparkles, Heart } from 'lucide-react';
+import { ArrowLeft, ShieldCheck, Package, CreditCard, Sparkles, Heart, Copy, Check, MessageCircle } from 'lucide-react';
 import type { CartItem } from '../types';
 import { usePaymentMethods } from '../hooks/usePaymentMethods';
 import { supabase } from '../lib/supabase';
@@ -29,6 +29,11 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
   // Payment
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
   const [notes, setNotes] = useState('');
+  
+  // Order message for copying
+  const [orderMessage, setOrderMessage] = useState<string>('');
+  const [copied, setCopied] = useState(false);
+  const [messengerOpened, setMessengerOpened] = useState(false);
 
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -168,12 +173,34 @@ ${paymentMethod ? `Account: ${paymentMethod.account_number}` : ''}
 Please confirm this order. Thank you!
       `.trim();
 
+      // Store order message for copying
+      setOrderMessage(orderDetails);
+
       // Send order to Facebook Messenger (pre-filled, customer still needs to send)
       const encodedMessage = encodeURIComponent(orderDetails);
       const messengerUrl = `https://m.me/renalyndv?text=${encodedMessage}`;
       
-      // Open Facebook Messenger
-      window.open(messengerUrl, '_blank');
+      // Try to open Facebook Messenger with better error handling
+      try {
+        const messengerWindow = window.open(messengerUrl, '_blank');
+        
+        // Check if popup was blocked
+        if (!messengerWindow || messengerWindow.closed || typeof messengerWindow.closed === 'undefined') {
+          console.warn('⚠️ Popup blocked or messenger failed to open');
+          setMessengerOpened(false);
+        } else {
+          setMessengerOpened(true);
+          // Check after a short delay if window is still open
+          setTimeout(() => {
+            if (messengerWindow.closed) {
+              setMessengerOpened(false);
+            }
+          }, 1000);
+        }
+      } catch (error) {
+        console.error('❌ Error opening messenger:', error);
+        setMessengerOpened(false);
+      }
       
       // Show confirmation
       setStep('confirmation');
@@ -181,6 +208,37 @@ Please confirm this order. Thank you!
       console.error('❌ Error placing order:', error);
       alert(`Failed to place order: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again.`);
     }
+  };
+
+  const handleCopyMessage = async () => {
+    try {
+      await navigator.clipboard.writeText(orderMessage);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = orderMessage;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      } catch (err) {
+        alert('Failed to copy. Please manually select and copy the message below.');
+      }
+      document.body.removeChild(textArea);
+    }
+  };
+
+  const handleOpenMessenger = () => {
+    const encodedMessage = encodeURIComponent(orderMessage);
+    const messengerUrl = `https://m.me/renalyndv?text=${encodedMessage}`;
+    window.open(messengerUrl, '_blank');
   };
 
   if (step === 'confirmation') {
@@ -197,11 +255,76 @@ Please confirm this order. Thank you!
             </h1>
             <p className="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
               ✅ Your order has been automatically saved to our system!
-              <br />
-              Facebook Messenger has been opened with your order details. 
-              <Heart className="inline w-5 h-5 text-pink-500 mx-1" />
-              Please send the message to complete your order. We will confirm and send you the payment details shortly!
+              {messengerOpened ? (
+                <>
+                  <br />
+                  Facebook Messenger has been opened with your order details. 
+                  <Heart className="inline w-5 h-5 text-pink-500 mx-1" />
+                  Please send the message to complete your order.
+                </>
+              ) : (
+                <>
+                  <br />
+                  <span className="text-orange-600 font-semibold">⚠️ Messenger didn't open automatically.</span>
+                  <br />
+                  Use the buttons below to open Messenger or copy the message manually.
+                </>
+              )}
             </p>
+
+            {/* Order Message Display */}
+            <div className="bg-gray-50 rounded-2xl p-6 mb-6 text-left border-2 border-gray-200">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-bold text-gray-900 flex items-center gap-2">
+                  <MessageCircle className="w-5 h-5 text-blue-600" />
+                  Your Order Message
+                </h3>
+                <button
+                  onClick={handleCopyMessage}
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all text-sm"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      Copy
+                    </>
+                  )}
+                </button>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-gray-300 max-h-64 overflow-y-auto">
+                <pre className="whitespace-pre-wrap text-sm text-gray-700 font-mono">
+                  {orderMessage}
+                </pre>
+              </div>
+              {copied && (
+                <p className="text-green-600 text-sm mt-2 flex items-center gap-1">
+                  <Check className="w-4 h-4" />
+                  Message copied to clipboard! You can now paste it in Messenger.
+                </p>
+              )}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="space-y-3 mb-8">
+              <button
+                onClick={handleOpenMessenger}
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Open Facebook Messenger
+              </button>
+              
+              {!messengerOpened && (
+                <p className="text-sm text-gray-600">
+                  💡 If Messenger doesn't open, copy the message above and paste it manually in Messenger
+                </p>
+              )}
+            </div>
             
             <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-6 mb-8 text-left border-2 border-blue-100">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -211,7 +334,7 @@ Please confirm this order. Thank you!
               <ul className="space-y-3 text-sm md:text-base text-gray-700">
                 <li className="flex items-start gap-3">
                   <span className="text-2xl">1️⃣</span>
-                  <span>Send the message in Facebook Messenger (it's already pre-filled for you)</span>
+                  <span>Send the message in Facebook Messenger (copy it above if needed)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-2xl">2️⃣</span>
