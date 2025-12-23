@@ -15,7 +15,8 @@ import ShippingManager from './ShippingManager';
 import SiteSettingsManager from './SiteSettingsManager';
 import PromoCodeManager from './PromoCodeManager';
 import GuideManager from './GuideManager';
-
+import SalesAnalyticsManager from './SalesAnalyticsManager';
+import { Calendar, BarChart3 } from 'lucide-react';
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('peptide_admin_auth') === 'true';
@@ -24,7 +25,7 @@ const AdminDashboard: React.FC = () => {
   const [loginError, setLoginError] = useState('');
   const { products, loading, addProduct, updateProduct, deleteProduct, refreshProducts } = useMenu();
   const { categories } = useCategories();
-  const [currentView, setCurrentView] = useState<'dashboard' | 'products' | 'add' | 'edit' | 'categories' | 'payments' | 'inventory' | 'orders' | 'shipping' | 'coa' | 'faq' | 'settings' | 'promo-codes' | 'guides'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'products' | 'add' | 'edit' | 'categories' | 'payments' | 'inventory' | 'orders' | 'shipping' | 'coa' | 'faq' | 'settings' | 'promo-codes' | 'guides' | 'analytics'>('dashboard');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [managingVariationsProductId, setManagingVariationsProductId] = useState<string | null>(null);
@@ -1104,6 +1105,11 @@ const AdminDashboard: React.FC = () => {
     return <GuideManager />;
   }
 
+  // Analytics View
+  if (currentView === 'analytics') {
+    return <SalesAnalyticsManager onBack={() => setCurrentView('dashboard')} />;
+  }
+
   // Settings View
   if (currentView === 'settings') {
     // SiteSettingsManager doesn't seem to have onBack prop based on earlier view_file, 
@@ -1185,67 +1191,74 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <div className="max-w-6xl mx-auto px-4 py-4">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-            <button
-              onClick={() => setCurrentView('products')}
-              className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-theme-accent/10 rounded-lg">
-                  <Package className="h-4 w-4 text-theme-accent" />
-                </div>
-                <div className="ml-3">
-                  <p className="text-xs font-medium text-gray-500">Total Products</p>
-                  <p className="text-xl font-bold text-theme-text">{totalProducts}</p>
-                </div>
-              </div>
-            </button>
 
-            <button
-              onClick={() => setCurrentView('products')}
-              className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-green-50 rounded-lg">
-                  <TrendingUp className="h-4 w-4 text-green-600" />
+          {/* Inventory Stats */}
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-navy-900 flex items-center gap-2 mb-4">
+              <Calendar className="w-5 h-5" />
+              Inventory Overview
+            </h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <button
+                onClick={() => setCurrentView('products')}
+                className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-theme-accent/10 rounded-lg">
+                    <Package className="h-4 w-4 text-theme-accent" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-xs font-medium text-gray-500">Total Products</p>
+                    <p className="text-xl font-bold text-theme-text">{totalProducts}</p>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-xs font-medium text-gray-500">Available</p>
-                  <p className="text-xl font-bold text-green-600">{availableProducts}</p>
-                </div>
-              </div>
-            </button>
+              </button>
 
-            <button
-              onClick={() => setCurrentView('products')}
-              className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-theme-secondary/10 rounded-lg">
-                  <Sparkles className="h-4 w-4 text-theme-secondary" />
+              <button
+                onClick={() => setCurrentView('products')}
+                className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-green-50 rounded-lg">
+                    <TrendingUp className="h-4 w-4 text-green-600" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-xs font-medium text-gray-500">Available</p>
+                    <p className="text-xl font-bold text-green-600">{availableProducts}</p>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-xs font-medium text-gray-500">Featured</p>
-                  <p className="text-xl font-bold text-theme-secondary">{featuredProducts}</p>
-                </div>
-              </div>
-            </button>
+              </button>
 
-            <button
-              onClick={() => setCurrentView('categories')}
-              className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-blue-50 rounded-lg">
-                  <Users className="h-4 w-4 text-blue-600" />
+              <button
+                onClick={() => setCurrentView('products')}
+                className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-theme-secondary/10 rounded-lg">
+                    <Sparkles className="h-4 w-4 text-theme-secondary" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-xs font-medium text-gray-500">Featured</p>
+                    <p className="text-xl font-bold text-theme-secondary">{featuredProducts}</p>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-xs font-medium text-gray-500">Categories</p>
-                  <p className="text-xl font-bold text-blue-600">{categories.length}</p>
+              </button>
+
+              <button
+                onClick={() => setCurrentView('categories')}
+                className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-blue-50 rounded-lg">
+                    <Users className="h-4 w-4 text-blue-600" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-xs font-medium text-gray-500">Categories</p>
+                    <p className="text-xl font-bold text-blue-600">{categories.length}</p>
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
+            </div>
           </div>
 
           {/* Quick Actions */}
@@ -1308,6 +1321,15 @@ const AdminDashboard: React.FC = () => {
                     <ShoppingCart className="h-4 w-4 text-navy-900" />
                   </div>
                   <span className="text-sm font-medium text-navy-900">Orders Management</span>
+                </button>
+                <button
+                  onClick={() => setCurrentView('analytics')}
+                  className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
+                >
+                  <div className="p-1.5 bg-theme-accent/10 rounded-lg">
+                    <BarChart3 className="h-4 w-4 text-theme-accent" />
+                  </div>
+                  <span className="text-sm font-medium text-theme-accent">Sales Analytics</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('shipping')}

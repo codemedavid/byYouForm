@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../lib/supabase';
 import {
     Plus,
@@ -9,7 +9,12 @@ import {
     Eye,
     EyeOff,
     GripVertical,
-    ArrowLeft
+    ArrowLeft,
+    Package,
+    Check,
+    Bold,
+    Italic,
+    Underline
 } from 'lucide-react';
 import ImageUpload from './ImageUpload';
 
@@ -25,6 +30,14 @@ interface Article {
     is_enabled: boolean;
     created_at: string;
     updated_at: string;
+    related_product_ids: string[] | null;
+}
+
+interface SimpleProduct {
+    id: string;
+    name: string;
+    base_price: number;
+    image_url: string | null;
 }
 
 interface ModalData {
@@ -37,6 +50,7 @@ interface ModalData {
     published_date: string;
     display_order: number;
     is_enabled: boolean;
+    related_product_ids: string[];
 }
 
 export default function GuideManager() {
@@ -50,13 +64,30 @@ export default function GuideManager() {
         author: 'SlimDose Team',
         published_date: new Date().toISOString().split('T')[0],
         display_order: 0,
-        is_enabled: true
+        is_enabled: true,
+        related_product_ids: []
     });
     const [editingArticle, setEditingArticle] = useState<string | null>(null);
+    const [products, setProducts] = useState<SimpleProduct[]>([]);
+    const contentEditorRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         fetchArticles();
+        fetchProducts();
     }, []);
+
+    const fetchProducts = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('products')
+                .select('id, name, base_price, image_url')
+                .order('name');
+            if (error) throw error;
+            setProducts(data || []);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    };
 
     const fetchArticles = async () => {
         try {
@@ -87,7 +118,8 @@ export default function GuideManager() {
                 author: article.author,
                 published_date: article.published_date,
                 display_order: article.display_order,
-                is_enabled: article.is_enabled
+                is_enabled: article.is_enabled,
+                related_product_ids: article.related_product_ids || []
             });
             setEditingArticle(article.id);
         } else {
@@ -100,7 +132,8 @@ export default function GuideManager() {
                 author: 'SlimDose Team',
                 published_date: new Date().toISOString().split('T')[0],
                 display_order: maxOrder + 1,
-                is_enabled: true
+                is_enabled: true,
+                related_product_ids: []
             });
             setEditingArticle(null);
         }
@@ -117,7 +150,8 @@ export default function GuideManager() {
             author: 'SlimDose Team',
             published_date: new Date().toISOString().split('T')[0],
             display_order: 0,
-            is_enabled: true
+            is_enabled: true,
+            related_product_ids: []
         });
         setEditingArticle(null);
     };
@@ -142,7 +176,8 @@ export default function GuideManager() {
                 author: modalData.author,
                 published_date: modalData.published_date,
                 display_order: modalData.display_order,
-                is_enabled: modalData.is_enabled
+                is_enabled: modalData.is_enabled,
+                related_product_ids: modalData.related_product_ids
             };
 
             if (editingArticle) {
@@ -206,6 +241,21 @@ export default function GuideManager() {
         } catch (error) {
             console.error('Error toggling article:', error);
             alert('Failed to update article status');
+        }
+    };
+
+    // Rich text formatting functions
+    const applyFormat = (command: 'bold' | 'italic' | 'underline') => {
+        document.execCommand(command, false);
+        // Update modal data with the new content
+        if (contentEditorRef.current) {
+            setModalData({ ...modalData, content: contentEditorRef.current.innerHTML });
+        }
+    };
+
+    const handleContentChange = () => {
+        if (contentEditorRef.current) {
+            setModalData({ ...modalData, content: contentEditorRef.current.innerHTML });
         }
     };
 
@@ -396,20 +446,54 @@ export default function GuideManager() {
                                 </p>
                             </div>
 
-                            {/* Article Content */}
+                            {/* Article Content - Rich Text Editor */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">
                                     Article Content *
                                 </label>
-                                <textarea
-                                    value={modalData.content}
-                                    onChange={(e) => setModalData({ ...modalData, content: e.target.value })}
-                                    rows={15}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-theme-accent focus:border-transparent font-mono text-sm"
-                                    placeholder="Write your full article content here. Use line breaks for paragraphs."
+                                {/* Formatting Toolbar */}
+                                <div className="flex items-center gap-1 p-2 bg-gray-100 border border-gray-300 border-b-0 rounded-t-lg">
+                                    <button
+                                        type="button"
+                                        onClick={() => applyFormat('bold')}
+                                        className="p-2 hover:bg-gray-200 rounded transition-colors flex items-center justify-center"
+                                        title="Bold (Ctrl+B)"
+                                    >
+                                        <Bold className="w-4 h-4 text-gray-700" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => applyFormat('italic')}
+                                        className="p-2 hover:bg-gray-200 rounded transition-colors flex items-center justify-center"
+                                        title="Italic (Ctrl+I)"
+                                    >
+                                        <Italic className="w-4 h-4 text-gray-700" />
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => applyFormat('underline')}
+                                        className="p-2 hover:bg-gray-200 rounded transition-colors flex items-center justify-center"
+                                        title="Underline (Ctrl+U)"
+                                    >
+                                        <Underline className="w-4 h-4 text-gray-700" />
+                                    </button>
+                                    <div className="h-5 w-px bg-gray-300 mx-1" />
+                                    <span className="text-xs text-gray-500 ml-2">
+                                        Select text, then click a button to format
+                                    </span>
+                                </div>
+                                {/* Rich Text Editor */}
+                                <div
+                                    ref={contentEditorRef}
+                                    contentEditable
+                                    onInput={handleContentChange}
+                                    onBlur={handleContentChange}
+                                    dangerouslySetInnerHTML={{ __html: modalData.content }}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-b-lg focus:ring-2 focus:ring-theme-accent focus:border-transparent min-h-[300px] max-h-[400px] overflow-y-auto text-sm bg-white prose prose-sm max-w-none focus:outline-none"
+                                    style={{ whiteSpace: 'pre-wrap' }}
                                 />
                                 <p className="text-xs text-gray-500 mt-2">
-                                    💡 Tip: Use line breaks to separate paragraphs. Your formatting will be preserved.
+                                    💡 Tip: Select text and click <strong>B</strong> for bold, <em>I</em> for italic, or <u>U</u> for underline. Keyboard shortcuts: Ctrl+B, Ctrl+I, Ctrl+U.
                                 </p>
                             </div>
 
@@ -454,6 +538,52 @@ export default function GuideManager() {
                                 <p className="text-xs text-gray-500 mt-1">
                                     Lower numbers appear first in the article list
                                 </p>
+                            </div>
+
+                            {/* Related Products */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <Package className="w-4 h-4 inline mr-1" />
+                                    Related Products (shown at article end)
+                                </label>
+                                <div className="border border-gray-300 rounded-lg max-h-48 overflow-y-auto">
+                                    {products.length === 0 ? (
+                                        <p className="text-sm text-gray-500 p-3">No products available</p>
+                                    ) : (
+                                        products.map((product) => {
+                                            const isSelected = modalData.related_product_ids.includes(product.id);
+                                            return (
+                                                <button
+                                                    key={product.id}
+                                                    type="button"
+                                                    onClick={() => {
+                                                        const newIds = isSelected
+                                                            ? modalData.related_product_ids.filter(id => id !== product.id)
+                                                            : [...modalData.related_product_ids, product.id];
+                                                        setModalData({ ...modalData, related_product_ids: newIds });
+                                                    }}
+                                                    className={`w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${isSelected ? 'bg-green-50' : ''}`}
+                                                >
+                                                    <div className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 ${isSelected ? 'bg-green-500 border-green-500' : 'border-gray-300'}`}>
+                                                        {isSelected && <Check className="w-3 h-3 text-white" />}
+                                                    </div>
+                                                    {product.image_url && (
+                                                        <img src={product.image_url} alt="" className="w-8 h-8 rounded object-cover shrink-0" />
+                                                    )}
+                                                    <div className="flex-1 min-w-0">
+                                                        <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
+                                                        <p className="text-xs text-gray-500">₱{product.base_price.toLocaleString()}</p>
+                                                    </div>
+                                                </button>
+                                            );
+                                        })
+                                    )}
+                                </div>
+                                {modalData.related_product_ids.length > 0 && (
+                                    <p className="text-xs text-green-600 mt-1">
+                                        ✓ {modalData.related_product_ids.length} product(s) selected
+                                    </p>
+                                )}
                             </div>
 
                             {/* Enable/Disable */}

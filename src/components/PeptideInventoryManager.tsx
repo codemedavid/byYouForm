@@ -130,6 +130,16 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
         }
         return product.stock_quantity > 0 && product.stock_quantity < 5;
       });
+      // Sort by lowest stock first
+      filtered = filtered.sort((a, b) => {
+        const aStock = a.variations && a.variations.length > 0
+          ? Math.min(...a.variations.map(v => v.stock_quantity))
+          : a.stock_quantity;
+        const bStock = b.variations && b.variations.length > 0
+          ? Math.min(...b.variations.map(v => v.stock_quantity))
+          : b.stock_quantity;
+        return aStock - bStock;
+      });
     } else if (selectedFilter === 'out-of-stock') {
       filtered = filtered.filter(product => {
         if (product.variations && product.variations.length > 0) {
@@ -283,15 +293,21 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
             <p className="text-xs text-gray-500 mt-1">Total Items: {stats.totalItems}</p>
           </div>
 
-          {/* Low Stock */}
-          <div className="bg-gradient-to-br from-gold-500 to-gold-600 rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 text-black border border-gold-700">
+          {/* Low Stock - Clickable */}
+          <button
+            onClick={() => setSelectedFilter(selectedFilter === 'low-stock' ? 'all' : 'low-stock')}
+            className={`bg-gradient-to-br from-gold-500 to-gold-600 rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 text-black border-2 transition-all text-left w-full ${selectedFilter === 'low-stock' ? 'border-navy-900 ring-2 ring-navy-900/30' : 'border-gold-700 hover:border-gold-800'
+              }`}
+          >
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-xs md:text-sm font-medium">Low Stock</h3>
               <AlertTriangle className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <p className="text-xl md:text-2xl lg:text-3xl font-bold">{stats.lowStockItems}</p>
-            <p className="text-xs mt-1 opacity-80">Needs attention</p>
-          </div>
+            <p className="text-xs mt-1 opacity-80">
+              {selectedFilter === 'low-stock' ? '✓ Showing low stock items' : 'Click to filter'}
+            </p>
+          </button>
         </div>
 
         {/* Search and Filters */}
