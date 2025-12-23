@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
               FAQ
             </a>
             <a
-              href="https://t.me/+kdn_GOqZXxI1Y2Jl"
+              href="https://t.me/+fGtShIUkbB84YzZl"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-[#0088cc] transition-colors flex items-center gap-2 text-sm font-medium"

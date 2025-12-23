@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
                   Peptalk
                 </a>
                 <a
-                  href="https://t.me/+kdn_GOqZXxI1Y2Jl"
+                  href="https://t.me/+fGtShIUkbB84YzZl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-gray-600 hover:text-[#0088cc] transition-colors flex items-center gap-1"
@@ -219,7 +219,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
                   Peptalk
                 </a>
                 <a
-                  href="https://t.me/+kdn_GOqZXxI1Y2Jl"
+                  href="https://t.me/+fGtShIUkbB84YzZl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 rounded-xl text-left font-medium text-base text-navy-900 hover:bg-navy-50 hover:text-navy-900 transition-all group"
