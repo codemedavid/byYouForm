@@ -1,26 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Minimalist SlimDose Theme */
-  --theme-bg: #FFFFFF;
-  --theme-text: #1A1A1A;
-  --theme-accent: #1A1A1A;
-  --theme-secondary: #F0E6D2;
+  /* byYOUFORM Luxury Black & Gold Theme */
+  --luxury-black: #000000;
+  --luxury-charcoal: #111111;
+  --luxury-gold: #D4AF37;
+  --luxury-champagne: #E6C87A;
+  --luxury-cream: #F5F2EB;
+  --luxury-muted: #9CA3AF;
 
-  --primary-black: #1A1A1A;
-  --primary-white: #ffffff;
-
-  --gray-50: #FFFFFF;
-  --gray-100: #F9F9F9;
-  --gray-200: #F0E6D2;
-  /* Beige tint */
-  --gray-300: #E5E5E5;
-  --gray-500: #888888;
-  --gray-900: #1A1A1A;
+  --theme-bg: #000000;
+  --theme-text: #F5F2EB;
+  --theme-accent: #D4AF37;
+  --theme-secondary: #111111;
 }
 
 * {
@@ -33,82 +29,89 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--theme-bg);
-  color: var(--theme-text);
-  line-height: 1.5;
+  background-color: var(--luxury-black);
+  color: var(--luxury-cream);
+  line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Luxury Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
-  color: var(--theme-text);
-  letter-spacing: -0.02em;
+  color: var(--luxury-cream);
+  letter-spacing: 0.02em;
 }
 
-/* Minimalist Button Styles */
+/* Gold text gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #E6C87A 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Luxury Button Styles */
 .btn-primary {
-  @apply bg-navy-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-navy-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  @apply bg-gold-400 text-black px-8 py-3 rounded-sm font-semibold transition-all duration-300 shadow-gold hover:shadow-gold-lg hover:-translate-y-0.5;
 }
 
 .btn-secondary {
-  @apply bg-transparent text-theme-text border border-theme-text px-6 py-3 rounded-md font-medium transition-all duration-200 hover:bg-theme-text hover:text-white active:scale-95;
+  @apply bg-transparent text-gold-400 border border-gold-400 px-6 py-3 rounded-sm font-medium transition-all duration-300 hover:bg-gold-400/10 active:scale-95;
 }
 
 .btn-outline {
-  @apply bg-transparent text-theme-text border border-gray-300 px-4 py-2 rounded-md font-medium transition-all duration-200 hover:border-theme-accent hover:text-theme-accent;
+  @apply bg-transparent text-luxury-cream border border-luxury-cream/30 px-4 py-2 rounded-sm font-medium transition-all duration-200 hover:border-gold-400 hover:text-gold-400;
 }
 
 .btn-gold {
-  /* Backward compatibility mapping to accent */
-  @apply bg-theme-secondary text-white px-6 py-3 rounded-md font-medium transition-all duration-200 hover:bg-opacity-90 active:scale-95 shadow-sm;
+  @apply bg-gold-400 text-black px-6 py-3 rounded-sm font-semibold transition-all duration-300 hover:bg-gold-300 active:scale-95 shadow-gold;
 }
 
-/* Minimalist Card Styles */
+.btn-gold-outline {
+  @apply bg-transparent text-gold-400 border border-gold-400 px-6 py-3 rounded-sm font-medium transition-all duration-300 hover:bg-gold-400/10;
+}
+
+/* Luxury Card Styles */
 .card {
-  @apply bg-white rounded-lg shadow-soft transition-all duration-200 border border-transparent hover:border-gray-200;
+  @apply bg-luxury-charcoal rounded-sm transition-all duration-300 border border-transparent hover:border-gold-400/30;
 }
 
 .card-hover {
-  @apply transform transition-all duration-300 hover:-translate-y-1 hover:shadow-medium;
+  @apply transform transition-all duration-300 hover:-translate-y-1 hover:shadow-gold;
 }
 
 /* Badge Styles */
 .badge {
-  @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+  @apply inline-flex items-center px-3 py-1 rounded-sm text-xs font-medium tracking-wider uppercase;
 }
 
 .badge-gold {
-  @apply bg-theme-bg text-theme-secondary border border-theme-secondary;
+  @apply bg-transparent text-gold-400 border border-gold-400/50;
 }
 
 .badge-accent {
-  @apply bg-theme-accent bg-opacity-10 text-theme-accent border border-theme-accent border-opacity-20;
+  @apply bg-gold-400/10 text-gold-400 border border-gold-400/20;
 }
 
 .badge-black {
-  @apply bg-theme-text text-white;
+  @apply bg-luxury-charcoal text-luxury-cream border border-luxury-cream/20;
 }
 
 /* Input Styles */
 .input-field {
-  @apply w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-theme-accent focus:border-theme-accent transition-all bg-white hover:border-gray-300;
+  @apply w-full px-4 py-3 bg-luxury-charcoal border border-luxury-cream/20 rounded-sm text-luxury-cream placeholder-luxury-cream/40 focus:outline-none focus:ring-1 focus:ring-gold-400 focus:border-gold-400 transition-all;
 }
 
 .input-field:disabled {
-  @apply bg-gray-50 cursor-not-allowed opacity-70;
+  @apply bg-luxury-black cursor-not-allowed opacity-50;
 }
 
 /* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -116,7 +119,7 @@ h6 {
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
 @keyframes slideIn {
@@ -124,7 +127,6 @@ h6 {
     opacity: 0;
     transform: translateX(-10px);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
@@ -135,23 +137,37 @@ h6 {
   animation: slideIn 0.4s ease-out;
 }
 
-/* Custom Scrollbar */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  }
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 2s ease-in-out infinite;
+}
+
+/* Custom Scrollbar - Luxury Dark */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--luxury-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-300);
-  border-radius: 3px;
+  background: var(--luxury-charcoal);
+  border-radius: 4px;
+  border: 1px solid var(--luxury-gold);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--theme-secondary);
+  background: var(--luxury-gold);
 }
 
 /* Utility Classes */
@@ -160,13 +176,13 @@ h6 {
 }
 
 .section-spacing {
-  @apply py-12 sm:py-16;
+  @apply py-16 sm:py-20 lg:py-24;
 }
 
-/* Loading Spinner */
+/* Loading Spinner - Gold */
 .spinner {
-  border: 2px solid var(--gray-200);
-  border-top: 2px solid var(--theme-accent);
+  border: 2px solid var(--luxury-charcoal);
+  border-top: 2px solid var(--luxury-gold);
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -177,22 +193,52 @@ h6 {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
 
-/* Text Gradients (Simplified/Removed for minimalism, keeping simple colors) */
+/* Text Gradients */
 .text-gradient-gold {
-  @apply text-theme-secondary;
+  background: linear-gradient(135deg, #D4AF37 0%, #E6C87A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.text-gradient-black {
-  @apply text-theme-text;
+/* Luxury Divider */
+.divider-gold {
+  @apply h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent;
 }
 
+/* Gold Glow Effect */
+.glow-gold {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+/* Subtle Gold Border */
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* Focus States */
 *:focus-visible {
-  outline: 2px solid var(--theme-accent);
+  outline: 2px solid var(--luxury-gold);
   outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(212, 175, 55, 0.3);
+  color: var(--luxury-cream);
+}
+
+/* Link Styles */
+a {
+  @apply transition-colors duration-200;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }

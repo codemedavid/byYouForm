@@ -284,7 +284,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
       });
 
       const orderDetails = `
-✨SlimDose Peptides - NEW ORDER
+✨byYOUFORM - NEW ORDER
 
 📅 ORDER DATE & TIME
 ${dateTimeStamp}
@@ -325,7 +325,7 @@ ${paymentMethod ? `Account: ${paymentMethod.account_number}` : ''}
 ${paymentProofUrl ? 'Screenshot attached to order.' : 'Pending'}
 
 📱 CONTACT METHOD
-Messenger: https://m.me/SlimDosePeptides
+Messenger: https://m.me/byYOUFORM
 
 📋 ORDER ID: ${orderData.id}
 
@@ -412,25 +412,24 @@ Please confirm this order. Thank you!
 
   if (step === 'confirmation') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white flex items-center justify-center px-4 py-12">
+      <div className="min-h-screen bg-luxury-black flex items-center justify-center px-4 py-12">
         <div className="max-w-2xl w-full">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center border-2 border-navy-700/30">
-            <div className="bg-gradient-to-br from-gold-500 to-gold-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce border-2 border-gold-700">
-              <ShieldCheck className="w-14 h-14 text-black" />
+          <div className="bg-luxury-charcoal rounded-sm p-8 md:p-12 text-center border border-gold-400/20">
+            <div className="bg-gold-400/10 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 border border-gold-400/30">
+              <ShieldCheck className="w-14 h-14 text-gold-400" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-2 flex-wrap">
-              <span className="bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">COMPLETE YOUR ORDER</span>
-              <Sparkles className="w-7 h-7 text-gold-600" />
+            <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-4 flex items-center justify-center gap-2 flex-wrap">
+              <span className="text-gold-400">COMPLETE YOUR ORDER</span>
             </h1>
-            <p className="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
+            <p className="text-luxury-cream/60 mb-8 text-base md:text-lg leading-relaxed">
               Copy the order message below and send it via Messenger along with your payment screenshot.
             </p>
 
             {/* Order Message Display */}
-            <div className="bg-gray-50 rounded-2xl p-6 mb-6 text-left border-2 border-navy-700/30">
+            <div className="bg-luxury-black/50 rounded-sm p-6 mb-6 text-left border border-gold-400/20">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-navy-900 flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5 text-gold-600" />
+                <h3 className="font-bold text-gold-400 flex items-center gap-2">
+                  <MessageCircle className="w-5 h-5" />
                   Your Order Message
                 </h3>
                 <button
@@ -523,7 +522,7 @@ Please confirm this order. Thank you!
 
   if (step === 'details') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white py-6 md:py-8">
+      <div className="min-h-screen bg-luxury-black py-8 md:py-12">
         <div className="container mx-auto px-3 md:px-4 max-w-6xl">
           <button
             onClick={onBack}
@@ -533,16 +532,15 @@ Please confirm this order. Thank you!
             <span className="text-sm md:text-base">Back to Cart</span>
           </button>
 
-          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent mb-6 md:mb-8 flex items-center gap-2">
+          <h1 className="text-2xl md:text-3xl font-playfair font-bold text-gold-400 mb-6 md:mb-8 flex items-center gap-2">
             Checkout
-            <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-gold-600" />
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Form */}
             <div className="lg:col-span-2 space-y-4 md:space-y-6">
               {/* Customer Information */}
-              <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-navy-700/30">
+              <div className="bg-luxury-charcoal rounded-sm p-5 md:p-6 border border-gold-400/20">
                 <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                   <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
                     <Package className="w-5 h-5 md:w-6 md:h-6 text-black" />
@@ -869,7 +867,7 @@ Please confirm this order. Thank you!
   const paymentMethodInfo = paymentMethods.find(pm => pm.id === selectedPaymentMethod);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white py-6 md:py-8">
+    <div className="min-h-screen bg-luxury-black py-8 md:py-12">
       <div className="container mx-auto px-3 md:px-4 max-w-6xl">
         <button
           onClick={() => setStep('details')}
@@ -1000,7 +998,7 @@ Please confirm this order. Thank you!
                     <MessageCircle className="w-6 h-6 text-gold-600" />
                     <div className="text-left">
                       <p className="font-semibold text-navy-900">Messenger</p>
-                      <p className="text-sm text-gray-500">SlimDose Peptides</p>
+                      <p className="text-sm text-luxury-cream/50">byYOUFORM</p>
                     </div>
                   </div>
                   {contactMethod === 'messenger' && (

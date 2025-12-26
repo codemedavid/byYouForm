@@ -20,11 +20,11 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
 
   if (loading) {
     return (
-      <div className="bg-white shadow-sm border-b border-gray-100 hidden md:block">
+      <div className="bg-luxury-charcoal border-b border-gold-400/10 hidden md:block">
         <div className="container mx-auto px-4 py-4">
           <div className="flex space-x-3 overflow-x-auto">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="animate-pulse bg-gray-100 h-10 w-32 rounded-lg" />
+              <div key={i} className="animate-pulse bg-gold-400/10 h-10 w-32 rounded-sm" />
             ))}
           </div>
         </div>
@@ -33,7 +33,7 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
   }
 
   return (
-    <nav className="bg-white shadow-sm sticky top-[64px] md:top-[80px] lg:top-[88px] z-40 border-b-4 border-navy-900">
+    <nav className="bg-luxury-charcoal sticky top-[64px] md:top-[80px] lg:top-[88px] z-40 border-b border-gold-400/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center space-x-2 py-4 overflow-x-auto scrollbar-hide">
           {categories.map((category) => {
@@ -44,17 +44,17 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
                 key={category.id}
                 onClick={() => onCategoryClick(category.id)}
                 className={`
-                  flex items-center space-x-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap
-                  transition-all duration-200 text-sm border
+                  flex items-center space-x-2 px-4 py-2 rounded-sm font-medium whitespace-nowrap
+                  transition-all duration-200 text-sm border tracking-wide
                   ${isSelected
-                    ? 'bg-navy-900 text-white border-navy-900 shadow-sm'
-                    : 'bg-white text-gray-600 hover:text-navy-900 border-navy-900 hover:bg-gray-50'
+                    ? 'bg-gold-400 text-black border-gold-400'
+                    : 'bg-transparent text-luxury-cream/70 border-gold-400/30 hover:border-gold-400 hover:text-gold-400'
                   }
                 `}
               >
                 <span>
                   {React.cloneElement(iconMap[category.icon] || <Grid className="w-4 h-4" />, {
-                    className: `w-4 h-4 ${isSelected ? 'text-white' : 'text-gray-400 group-hover:text-theme-text'}`
+                    className: `w-4 h-4 ${isSelected ? 'text-black' : 'text-gold-400/70'}`
                   })}
                 </span>
                 <span>{category.name}</span>

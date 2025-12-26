@@ -15,8 +15,8 @@ import ShippingManager from './ShippingManager';
 import SiteSettingsManager from './SiteSettingsManager';
 import PromoCodeManager from './PromoCodeManager';
 import GuideManager from './GuideManager';
-import SalesAnalyticsManager from './SalesAnalyticsManager';
-import { Calendar, BarChart3 } from 'lucide-react';
+
+import { Calendar } from 'lucide-react';
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('peptide_admin_auth') === 'true';
@@ -25,7 +25,7 @@ const AdminDashboard: React.FC = () => {
   const [loginError, setLoginError] = useState('');
   const { products, loading, addProduct, updateProduct, deleteProduct, refreshProducts } = useMenu();
   const { categories } = useCategories();
-  const [currentView, setCurrentView] = useState<'dashboard' | 'products' | 'add' | 'edit' | 'categories' | 'payments' | 'inventory' | 'orders' | 'shipping' | 'coa' | 'faq' | 'settings' | 'promo-codes' | 'guides' | 'analytics'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'products' | 'add' | 'edit' | 'categories' | 'payments' | 'inventory' | 'orders' | 'shipping' | 'coa' | 'faq' | 'settings' | 'promo-codes' | 'guides'>('dashboard');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [managingVariationsProductId, setManagingVariationsProductId] = useState<string | null>(null);
@@ -344,7 +344,7 @@ const AdminDashboard: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'Slimdose@Admin!2025') {
+    if (password === 'byYOUFORM@Admin!2025') {
       setIsAuthenticated(true);
       localStorage.setItem('peptide_admin_auth', 'true');
       setLoginError('');
@@ -375,11 +375,11 @@ const AdminDashboard: React.FC = () => {
             <div className="relative mx-auto w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-theme-accent/30">
               <img
                 src="/assets/logo.jpeg"
-                alt="SlimDose Peptides"
+                alt="byYOUFORM"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h1 className="text-2xl font-bold text-theme-text mb-1">Admin Access</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">Admin Access</h1>
             <p className="text-sm text-gray-500">
               Enter password to continue
             </p>
@@ -392,7 +392,7 @@ const AdminDashboard: React.FC = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-theme-accent focus:border-theme-accent transition-colors"
+                className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-600 focus:border-theme-accent transition-colors"
                 placeholder="Enter admin password"
                 required
               />
@@ -435,7 +435,7 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={handleCancel}
-                    className="text-gray-700 hover:text-theme-accent transition-colors flex items-center gap-1 group"
+                    className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 group"
                   >
                     <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-xs md:text-sm">Back</span>
@@ -452,7 +452,7 @@ const AdminDashboard: React.FC = () => {
                   <button
                     onClick={handleSaveProduct}
                     disabled={isProcessing}
-                    className="bg-theme-accent hover:bg-theme-accent/90 text-white px-2 md:px-3 py-1 rounded-md transition-all flex items-center gap-1 shadow-sm hover:shadow disabled:opacity-50 text-xs"
+                    className="bg-gold-600 hover:bg-gold-600/90 text-white px-2 md:px-3 py-1 rounded-md transition-all flex items-center gap-1 shadow-sm hover:shadow disabled:opacity-50 text-xs"
                   >
                     <Save className="h-3 w-3" />
                     {isProcessing ? 'Saving...' : 'Save'}
@@ -609,7 +609,7 @@ const AdminDashboard: React.FC = () => {
                           setFormData({ ...formData, inclusions: formData.inclusions || [] });
                         }
                       }}
-                      className="w-4 h-4 text-theme-accent rounded focus:ring-theme-accent"
+                      className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600"
                     />
                     <span className="text-xs font-semibold text-gray-700">This is a SET product</span>
                   </label>
@@ -630,7 +630,7 @@ const AdminDashboard: React.FC = () => {
                       rows={6}
                     />
                     <p className="text-xs text-gray-500 mt-2 flex items-start gap-1.5">
-                      <span className="text-theme-accent font-bold">💡</span>
+                      <span className="text-gold-600 font-bold">💡</span>
                       <span>Enter each item on a new line. These will be displayed as a checklist on the product detail page. Check "This is a SET product" above to enable this feature.</span>
                     </p>
                   </div>
@@ -640,7 +640,7 @@ const AdminDashboard: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, inclusions: [] })}
-                      className="text-xs text-theme-accent hover:text-gold-700 font-medium"
+                      className="text-xs text-gold-600 hover:text-gold-700 font-medium"
                     >
                       Enable SET feature
                     </button>
@@ -672,7 +672,7 @@ const AdminDashboard: React.FC = () => {
                         type="checkbox"
                         checked={formData.featured || false}
                         onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                        className="w-4 h-4 text-theme-accent rounded focus:ring-theme-accent"
+                        className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600"
                       />
                       <span className="text-xs font-semibold text-gray-700">⭐ Featured</span>
                     </label>
@@ -715,7 +715,7 @@ const AdminDashboard: React.FC = () => {
                         type="checkbox"
                         checked={formData.discount_active || false}
                         onChange={(e) => setFormData({ ...formData, discount_active: e.target.checked })}
-                        className="w-4 h-4 text-red-600 rounded focus:ring-theme-accent"
+                        className="w-4 h-4 text-red-600 rounded focus:ring-gold-600"
                       />
                       <span className="text-xs font-semibold text-gray-700">🏷️ Enable Discount</span>
                     </label>
@@ -774,7 +774,7 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => setCurrentView('dashboard')}
-                    className="text-gray-700 hover:text-theme-accent transition-colors flex items-center gap-1 group"
+                    className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 group"
                   >
                     <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-xs md:text-sm">Dashboard</span>
@@ -804,7 +804,7 @@ const AdminDashboard: React.FC = () => {
                   )}
                   <button
                     onClick={handleAddProduct}
-                    className="bg-theme-accent hover:bg-theme-accent/90 text-white px-2 md:px-3 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1"
+                    className="bg-gold-600 hover:bg-gold-600/90 text-white px-2 md:px-3 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1"
                   >
                     <Plus className="h-3 w-3" />
                     <span className="hidden sm:inline">Add New</span>
@@ -826,7 +826,7 @@ const AdminDashboard: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setSelectedProducts(new Set())}
-                  className="text-xs text-theme-accent hover:text-gold-700 font-medium underline"
+                  className="text-xs text-gold-600 hover:text-gold-700 font-medium underline"
                 >
                   Clear Selection
                 </button>
@@ -843,7 +843,7 @@ const AdminDashboard: React.FC = () => {
                         type="checkbox"
                         checked={selectedProducts.has(product.id)}
                         onChange={() => toggleSelectProduct(product.id)}
-                        className="mt-0.5 w-4 h-4 text-theme-accent rounded focus:ring-theme-accent cursor-pointer shrink-0"
+                        className="mt-0.5 w-4 h-4 text-gold-600 rounded focus:ring-gold-600 cursor-pointer shrink-0"
                       />
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-bold text-gray-900 truncate">{product.name}</h3>
@@ -861,7 +861,7 @@ const AdminDashboard: React.FC = () => {
                         disabled={isProcessing}
                         className={`p - 1.5 rounded - lg transition - all disabled: opacity - 50 disabled: cursor - not - allowed ${product.variations && product.variations.length > 0
                           ? 'bg-gold-500 text-black hover:bg-gold-600 shadow-md cursor-pointer'
-                          : 'text-theme-accent hover:bg-gray-100 cursor-pointer'
+                          : 'text-gold-600 hover:bg-gray-100 cursor-pointer'
                           } `}
                         title="Manage Sizes - Click to edit prices!"
                       >
@@ -897,7 +897,7 @@ const AdminDashboard: React.FC = () => {
                       </div>
                       <div>
                         <div className="text-[10px] text-gray-500">Sizes</div>
-                        <div className="text-sm font-semibold text-theme-accent">{product.variations?.length || 0}</div>
+                        <div className="text-sm font-semibold text-gold-600">{product.variations?.length || 0}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
@@ -925,7 +925,7 @@ const AdminDashboard: React.FC = () => {
                           type="checkbox"
                           checked={selectedProducts.size === products.length && products.length > 0}
                           onChange={toggleSelectAll}
-                          className="w-4 h-4 text-theme-accent rounded focus:ring-theme-accent cursor-pointer"
+                          className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600 cursor-pointer"
                           title="Select All"
                         />
                       </th>
@@ -947,7 +947,7 @@ const AdminDashboard: React.FC = () => {
                             type="checkbox"
                             checked={selectedProducts.has(product.id)}
                             onChange={() => toggleSelectProduct(product.id)}
-                            className="w-4 h-4 text-theme-accent rounded focus:ring-theme-accent cursor-pointer"
+                            className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600 cursor-pointer"
                           />
                         </td>
                         <td className="px-4 py-2">
@@ -960,7 +960,7 @@ const AdminDashboard: React.FC = () => {
                         <td className="px-4 py-2 text-xs font-bold text-gray-900">
                           ₱{product.base_price.toLocaleString('en-PH', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                           {product.variations && product.variations.length > 0 && (
-                            <div className="text-[9px] text-theme-accent font-medium mt-0.5">
+                            <div className="text-[9px] text-gold-600 font-medium mt-0.5">
                               Not used (has sizes)
                             </div>
                           )}
@@ -968,11 +968,11 @@ const AdminDashboard: React.FC = () => {
                         <td className="px-4 py-2">
                           {product.variations && product.variations.length > 0 ? (
                             <div>
-                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-theme-accent">
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gold-600">
                                 {product.variations.length} {product.variations.length === 1 ? 'size' : 'sizes'}
                               </span>
                               <div className="text-[9px] text-gray-500 mt-0.5">
-                                Click <Layers className="w-2.5 h-2.5 inline text-theme-accent" /> to edit
+                                Click <Layers className="w-2.5 h-2.5 inline text-gold-600" /> to edit
                               </div>
                             </div>
                           ) : (
@@ -990,7 +990,7 @@ const AdminDashboard: React.FC = () => {
                         <td className="px-4 py-2 hidden xl:table-cell">
                           <div className="flex flex-col gap-0.5">
                             {product.featured && (
-                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-theme-accent">
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gold-600">
                                 ⭐ Featured
                               </span>
                             )}
@@ -1012,7 +1012,7 @@ const AdminDashboard: React.FC = () => {
                               disabled={isProcessing}
                               className={`p-1.5 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${product.variations && product.variations.length > 0
                                 ? 'bg-gold-500 text-black hover:bg-gold-600 shadow-md hover:shadow-lg cursor-pointer'
-                                : 'text-theme-accent hover:bg-gray-100 cursor-pointer'
+                                : 'text-gold-600 hover:bg-gray-100 cursor-pointer'
                                 } `}
                               title="Manage Sizes - Click here to edit prices!"
                             >
@@ -1105,11 +1105,6 @@ const AdminDashboard: React.FC = () => {
     return <GuideManager />;
   }
 
-  // Analytics View
-  if (currentView === 'analytics') {
-    return <SalesAnalyticsManager onBack={() => setCurrentView('dashboard')} />;
-  }
-
   // Settings View
   if (currentView === 'settings') {
     // SiteSettingsManager doesn't seem to have onBack prop based on earlier view_file, 
@@ -1157,13 +1152,13 @@ const AdminDashboard: React.FC = () => {
                 <div className="w-9 h-9 rounded-full overflow-hidden border border-navy-900/20">
                   <img
                     src="/assets/logo.jpeg"
-                    alt="SlimDose Peptides"
+                    alt="byYOUFORM"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
-                  <h1 className="text-base font-bold text-theme-text">
-                    SlimDose Peptides
+                  <h1 className="text-base font-bold text-gray-900">
+                    byYOUFORM
                   </h1>
                   <p className="text-xs text-gray-500">
                     Admin Dashboard
@@ -1175,7 +1170,7 @@ const AdminDashboard: React.FC = () => {
                   href="/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-theme-accent transition-colors font-medium text-sm hidden sm:block"
+                  className="text-gray-600 hover:text-gold-600 transition-colors font-medium text-sm hidden sm:block"
                 >
                   View Website
                 </a>
@@ -1204,12 +1199,12 @@ const AdminDashboard: React.FC = () => {
                 className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-theme-accent/10 rounded-lg">
-                    <Package className="h-4 w-4 text-theme-accent" />
+                  <div className="p-2 bg-gold-600/10 rounded-lg">
+                    <Package className="h-4 w-4 text-gold-600" />
                   </div>
                   <div className="ml-3">
                     <p className="text-xs font-medium text-gray-500">Total Products</p>
-                    <p className="text-xl font-bold text-theme-text">{totalProducts}</p>
+                    <p className="text-xl font-bold text-gray-900">{totalProducts}</p>
                   </div>
                 </div>
               </button>
@@ -1234,12 +1229,12 @@ const AdminDashboard: React.FC = () => {
                 className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-theme-secondary/10 rounded-lg">
-                    <Sparkles className="h-4 w-4 text-theme-secondary" />
+                  <div className="p-2 bg-gold-500/10 rounded-lg">
+                    <Sparkles className="h-4 w-4 text-gold-500" />
                   </div>
                   <div className="ml-3">
                     <p className="text-xs font-medium text-gray-500">Featured</p>
-                    <p className="text-xl font-bold text-theme-secondary">{featuredProducts}</p>
+                    <p className="text-xl font-bold text-gold-500">{featuredProducts}</p>
                   </div>
                 </div>
               </button>
@@ -1264,7 +1259,7 @@ const AdminDashboard: React.FC = () => {
           {/* Quick Actions */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-white rounded-xl shadow-soft p-4 border border-gray-100">
-              <h3 className="text-base font-bold text-theme-text mb-3">
+              <h3 className="text-base font-bold text-gray-900 mb-3">
                 Quick Actions
               </h3>
               <div className="space-y-1">
@@ -1321,15 +1316,6 @@ const AdminDashboard: React.FC = () => {
                     <ShoppingCart className="h-4 w-4 text-navy-900" />
                   </div>
                   <span className="text-sm font-medium text-navy-900">Orders Management</span>
-                </button>
-                <button
-                  onClick={() => setCurrentView('analytics')}
-                  className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
-                >
-                  <div className="p-1.5 bg-theme-accent/10 rounded-lg">
-                    <BarChart3 className="h-4 w-4 text-theme-accent" />
-                  </div>
-                  <span className="text-sm font-medium text-theme-accent">Sales Analytics</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('shipping')}
@@ -1389,14 +1375,14 @@ const AdminDashboard: React.FC = () => {
             </div>
 
             <div className="bg-white rounded-xl shadow-soft p-4 border border-gray-100">
-              <h3 className="text-base font-bold text-theme-text mb-3">
+              <h3 className="text-base font-bold text-gray-900 mb-3">
                 Categories Overview
               </h3>
               <div className="space-y-2">
                 {categoryCounts.map((category, index) => {
                   const bgColors = [
-                    'bg-theme-accent',
-                    'bg-theme-secondary',
+                    'bg-gold-600',
+                    'bg-gold-500',
                     'bg-blue-500',
                     'bg-green-500',
                     'bg-purple-500',

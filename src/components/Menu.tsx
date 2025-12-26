@@ -59,59 +59,70 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems }) => {
         />
       )}
 
-      <div className="min-h-screen bg-theme-bg">
+      <div className="min-h-screen bg-luxury-black">
         <Hero
           onShopAll={() => {
             productsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }}
         />
 
-        <div className="container mx-auto px-4 py-8" ref={productsRef}>
+        <div className="container mx-auto px-4 py-16" ref={productsRef}>
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gold-400 mb-3">
+              Our Collection
+            </h2>
+            <p className="text-luxury-cream/60 max-w-2xl mx-auto">
+              Precision-formulated peptides for those who demand excellence
+            </p>
+            <div className="h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent mt-8 max-w-md mx-auto" />
+          </div>
+
           {/* Search and Filter Controls */}
-          <div className="mb-8 flex flex-col sm:flex-row gap-4">
+          <div className="mb-10 flex flex-col sm:flex-row gap-4">
             {/* Search Bar */}
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gold-400/60 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 text-base border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-theme-accent focus:border-theme-accent transition-all bg-white"
+                className="w-full pl-12 pr-4 py-3.5 text-base bg-luxury-charcoal border border-gold-400/20 rounded-sm text-luxury-cream placeholder-luxury-cream/40 focus:outline-none focus:ring-1 focus:ring-gold-400 focus:border-gold-400 transition-all"
               />
             </div>
 
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-3 sm:w-auto bg-white rounded-lg px-4 py-3 border border-gray-200">
-              <Filter className="text-gray-500 w-5 h-5" />
+            <div className="flex items-center gap-3 sm:w-auto bg-luxury-charcoal rounded-sm px-4 py-3.5 border border-gold-400/20">
+              <Filter className="text-gold-400/60 w-5 h-5" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as 'name' | 'price' | 'purity')}
-                className="focus:outline-none bg-transparent font-medium text-theme-text text-sm"
+                className="focus:outline-none bg-transparent font-medium text-luxury-cream text-sm"
               >
-                <option value="name">Sort by Name</option>
-                <option value="price">Sort by Price</option>
-                <option value="purity">Sort by Purity</option>
+                <option value="name" className="bg-luxury-charcoal">Sort by Name</option>
+                <option value="price" className="bg-luxury-charcoal">Sort by Price</option>
+                <option value="purity" className="bg-luxury-charcoal">Sort by Purity</option>
               </select>
             </div>
           </div>
 
           {/* Results Count */}
-          <div className="mb-6 flex items-center gap-2">
-            <p className="text-gray-500 font-medium text-sm">
-              Showing <span className="font-bold text-theme-text">{sortedProducts.length}</span> products
+          <div className="mb-8 flex items-center gap-2">
+            <p className="text-luxury-cream/50 font-medium text-sm tracking-wide">
+              Showing <span className="font-bold text-gold-400">{sortedProducts.length}</span> products
             </p>
           </div>
 
           {/* Products Grid */}
           {sortedProducts.length === 0 ? (
             <div className="text-center py-20">
-              <div className="bg-white rounded-xl shadow-soft p-12 max-w-md mx-auto border border-gray-100">
-                <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Package className="w-10 h-10 text-gray-400" />
+              <div className="bg-luxury-charcoal rounded-sm p-12 max-w-md mx-auto border border-gold-400/20">
+                <div className="bg-gold-400/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Package className="w-10 h-10 text-gold-400" />
                 </div>
-                <h3 className="text-xl font-bold text-theme-text mb-2">No products found</h3>
-                <p className="text-gray-500 mb-6">
+                <h3 className="text-xl font-playfair font-bold text-luxury-cream mb-2">No products found</h3>
+                <p className="text-luxury-cream/60 mb-6">
                   {searchQuery
                     ? `No products match "${searchQuery}".`
                     : 'No products available.'}
@@ -119,7 +130,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems }) => {
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="btn-primary"
+                    className="btn-gold"
                   >
                     Clear Search
                   </button>
