@@ -1,13 +1,14 @@
-# Peptivate.ph - Premium Peptide E-commerce Platform
+# byYOUFORM - Bespoke Peptide Science
 
-A modern, professional e-commerce platform for selling research-grade peptides. Built with React, TypeScript, Vite, and Supabase.
+A luxury e-commerce platform for personalized, high-end peptide solutions. Built with React, TypeScript, Vite, and Supabase.
 
 ## 🎨 Design Theme
 
-- **Primary Colors:** Dark Blue (#2563eb), Light Blue (#60a5fa), and White (#ffffff)
-- **Accent Colors:** Indigo (#6366f1) and Sky Blue (#0ea5e9)
-- **Typography:** Inter font family for clean, professional look
-- **Style:** Professional medical/pharmaceutical aesthetic with corporate blue theme
+- **Primary Colors:** Jet Black (#000000), Deep Charcoal (#111111)
+- **Accent Colors:** Metallic Gold (#D4AF37), Soft Champagne (#E6C87A)
+- **Text Colors:** Warm Off-White (#F5F2EB), Soft Gray (#9CA3AF)
+- **Typography:** Playfair Display (headings), Inter (body text)
+- **Style:** Luxury black & gold aesthetic with premium, refined appearance
 
 ## 🧪 Features
 
@@ -34,7 +35,7 @@ A modern, professional e-commerce platform for selling research-grade peptides. 
 - 💳 **Payment Methods** - Configure payment options
 - ⚙️ **Site Settings** - Customize site information
 - 📊 **Dashboard Analytics** - View product statistics
-- 🔐 **Secure Access** - Password protected (default: `Peptide@Admin!2025`)
+- 🔐 **Secure Access** - Password protected (default: `byYOUFORM@Admin!2025`)
 
 ## 🗄️ Database Schema
 
@@ -204,7 +205,7 @@ supabase/
 
 ### Admin Access
 - URL: `/admin`
-- Default Password: `Peptide@Admin!2025`
+- Default Password: `byYOUFORM@Admin!2025`
 - Change password in: `src/components/AdminDashboard.tsx` (line 235)
 
 ### Site Settings (Configurable in Admin)
@@ -332,3 +333,4 @@ For technical support or questions:
 # peptivate
 # HP-GLOW
 # peptalkph
+# byYouForm
