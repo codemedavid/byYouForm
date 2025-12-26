@@ -139,7 +139,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
               <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
                 <button
                   onClick={handleCancel}
-                  className="text-gray-600 hover:text-gold-600 transition-colors flex items-center gap-1 sm:gap-2 group flex-shrink-0"
+                  className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 sm:gap-2 group flex-shrink-0"
                 >
                   <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" />
                   <span className="text-xs sm:text-sm font-medium hidden sm:inline">Back</span>
@@ -159,7 +159,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                 </button>
                 <button
                   onClick={handleSaveCategory}
-                  className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all flex items-center gap-1.5 sm:gap-2 shadow-md hover:shadow-lg disabled:opacity-50 text-xs sm:text-sm font-semibold active:scale-95"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all flex items-center gap-1.5 sm:gap-2 shadow-md hover:shadow-lg disabled:opacity-50 text-xs sm:text-sm font-semibold active:scale-95"
                 >
                   <Save className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   <span>Save</span>
@@ -180,7 +180,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                   type="text"
                   value={formData.name}
                   onChange={(e) => handleNameChange(e.target.value)}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-navy-900 transition-all text-sm"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-navy-900 transition-all text-sm"
                   placeholder="e.g., Research Peptides"
                 />
               </div>
@@ -193,7 +193,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                   type="text"
                   value={formData.id}
                   onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-navy-900 transition-all text-xs sm:text-sm font-mono disabled:bg-gray-50 disabled:cursor-not-allowed disabled:text-gray-500"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-navy-900 transition-all text-xs sm:text-sm font-mono disabled:bg-gray-50 disabled:cursor-not-allowed disabled:text-gray-500"
                   placeholder="e.g., research-peptides"
                   disabled={currentView === 'edit'}
                 />
@@ -214,7 +214,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                     type="text"
                     value={formData.icon}
                     onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
-                    className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-navy-900 transition-all text-sm"
+                    className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-navy-900 transition-all text-sm"
                     placeholder="Enter emoji (e.g., ☕, 🧪, 💊)"
                   />
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center text-2xl sm:text-3xl border border-gray-200 shadow-sm overflow-hidden flex-shrink-0">
@@ -234,7 +234,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                   type="number"
                   value={formData.sort_order}
                   onChange={(e) => setFormData({ ...formData, sort_order: Number(e.target.value) })}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-navy-900 transition-all text-sm"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-navy-900 transition-all text-sm"
                   placeholder="0"
                 />
                 <p className="text-[10px] sm:text-xs text-gray-500 mt-1.5 sm:mt-2">
@@ -248,7 +248,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                     type="checkbox"
                     checked={formData.active}
                     onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
-                    className="w-4 h-4 sm:w-5 sm:h-5 text-gold-600 rounded border-gray-300 focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 cursor-pointer"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 rounded border-gray-300 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
                   />
                   <span className="text-xs sm:text-sm font-semibold text-gray-900 group-hover:text-gray-700">
                     Active Category
@@ -271,7 +271,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
             <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
               <button
                 onClick={onBack}
-                className="text-gray-600 hover:text-gold-600 transition-colors flex items-center gap-1 sm:gap-2 group flex-shrink-0"
+                className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 sm:gap-2 group flex-shrink-0"
               >
                 <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs sm:text-sm font-medium hidden sm:inline">Dashboard</span>
@@ -283,7 +283,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
             </div>
             <button
               onClick={handleAddCategory}
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-all flex items-center gap-1.5 sm:gap-2 shadow-md hover:shadow-lg text-xs sm:text-sm font-semibold active:scale-95 flex-shrink-0"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-all flex items-center gap-1.5 sm:gap-2 shadow-md hover:shadow-lg text-xs sm:text-sm font-semibold active:scale-95 flex-shrink-0"
             >
               <Plus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span className="hidden sm:inline">Add Category</span>
@@ -313,7 +313,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
               </p>
               <button
                 onClick={handleAddCategory}
-                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all shadow-md hover:shadow-lg font-medium text-xs sm:text-sm active:scale-95"
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all shadow-md hover:shadow-lg font-medium text-xs sm:text-sm active:scale-95"
               >
                 <Plus className="h-3.5 w-3.5 sm:h-4 sm:w-4 inline mr-1.5 sm:mr-2" />
                 Create First Category
@@ -377,7 +377,7 @@ const CategoryManager: React.FC<CategoryManagerProps> = ({ onBack }) => {
                       <div className="flex items-center gap-0.5 sm:gap-1">
                         <button
                           onClick={() => handleEditCategory(category)}
-                          className="p-1.5 sm:p-2 text-gray-400 hover:text-gold-600 hover:bg-gold-50 rounded-lg transition-all duration-200"
+                          className="p-1.5 sm:p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
                           title="Edit category"
                         >
                           <Edit className="h-3.5 w-3.5 sm:h-4 sm:w-4" />

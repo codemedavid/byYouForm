@@ -35,7 +35,12 @@ body {
 }
 
 /* Luxury Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Playfair Display', serif;
   font-weight: 600;
   color: var(--luxury-cream);
@@ -97,13 +102,30 @@ h1, h2, h3, h4, h5, h6 {
   @apply bg-luxury-charcoal text-luxury-cream border border-luxury-cream/20;
 }
 
-/* Input Styles */
+/* Input Styles - Admin friendly with white background */
 .input-field {
-  @apply w-full px-4 py-3 bg-luxury-charcoal border border-luxury-cream/20 rounded-sm text-luxury-cream placeholder-luxury-cream/40 focus:outline-none focus:ring-1 focus:ring-gold-400 focus:border-gold-400 transition-all;
+  @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all;
 }
 
 .input-field:disabled {
-  @apply bg-luxury-black cursor-not-allowed opacity-50;
+  @apply bg-gray-100 cursor-not-allowed opacity-60;
+}
+
+/* Admin Input Styles - Clean and Readable */
+.admin-input {
+  @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all;
+}
+
+.admin-input:disabled {
+  @apply bg-gray-100 cursor-not-allowed opacity-60;
+}
+
+/* Global dark placeholder for all inputs - ensures visibility */
+input::placeholder,
+textarea::placeholder {
+  color: #1f2937 !important;
+  /* gray-800 - very dark for visibility */
+  opacity: 1 !important;
 }
 
 /* Animations */
@@ -112,6 +134,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -127,6 +150,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -138,9 +162,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes goldPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
   }
@@ -193,6 +220,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

@@ -30,7 +30,7 @@ const FAQ: React.FC = () => {
         ? faqs.filter(faq => faq.category === activeCategory)
         : faqs;
 
-    const whatsappUrl = `https://wa.me/639062349763?text=${encodeURIComponent('Hi! I have a question about your products.')}`;
+    const telegramUrl = `https://t.me/09658032685`;
 
     if (loading) {
         return (
@@ -144,7 +144,7 @@ const FAQ: React.FC = () => {
                         Our team is here to assist you with personalized guidance for your wellness journey.
                     </p>
                     <a
-                        href={whatsappUrl}
+                        href={telegramUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-gold-400 text-black px-8 py-4 rounded-sm font-semibold hover:bg-gold-300 transition-all shadow-gold hover:shadow-gold-lg"

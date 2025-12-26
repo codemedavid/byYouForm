@@ -257,7 +257,7 @@ const COAManager: React.FC<COAManagerProps> = ({ onBack }) => {
           )}
           <div>
             <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-              <Shield className="w-7 h-7 text-gold-600" />
+              <Shield className="w-7 h-7 text-blue-600" />
               COA Lab Reports
             </h2>
             <p className="text-sm text-gray-600 mt-1">
@@ -267,7 +267,7 @@ const COAManager: React.FC<COAManagerProps> = ({ onBack }) => {
         </div>
         <div className="flex items-center gap-3">
           {/* COA Page Toggle */}
-          <div className="flex items-center gap-2 bg-white border border-navy-700/30 rounded-lg px-3 py-2 shadow-sm">
+          <div className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm">
             <span className="text-xs font-medium text-gray-700">Show COA Page:</span>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
@@ -276,15 +276,15 @@ const COAManager: React.FC<COAManagerProps> = ({ onBack }) => {
                 onChange={(e) => toggleCOAPage(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-gold-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold-600"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-600"></div>
             </label>
-            <span className={`text-xs font-semibold ${coaPageEnabled ? 'text-gold-600' : 'text-gray-400'}`}>
+            <span className={`text-xs font-semibold ${coaPageEnabled ? 'text-blue-600' : 'text-gray-400'}`}>
               {coaPageEnabled ? 'ON' : 'OFF'}
             </span>
           </div>
           <button
             onClick={handleAdd}
-            className="flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-black px-4 py-2 rounded-lg font-medium transition-all shadow-md"
+            className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-black px-4 py-2 rounded-lg font-medium transition-all shadow-md"
           >
             <Plus className="w-5 h-5" />
             Add COA Report

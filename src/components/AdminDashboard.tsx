@@ -344,7 +344,7 @@ const AdminDashboard: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'byYOUFORM@Admin!2025') {
+    if (password === 'YouForm@Admin!2025') {
       setIsAuthenticated(true);
       localStorage.setItem('peptide_admin_auth', 'true');
       setLoginError('');
@@ -370,7 +370,7 @@ const AdminDashboard: React.FC = () => {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-theme-bg flex items-center justify-center px-4">
-        <div className="bg-white rounded-xl shadow-soft p-6 md:p-8 w-full max-w-md border border-navy-900/20">
+        <div className="bg-white rounded-xl shadow-soft p-6 md:p-8 w-full max-w-md border border-gray-300">
           <div className="text-center mb-6">
             <div className="relative mx-auto w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-theme-accent/30">
               <img
@@ -392,7 +392,7 @@ const AdminDashboard: React.FC = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-600 focus:border-theme-accent transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-theme-accent transition-colors"
                 placeholder="Enter admin password"
                 required
               />
@@ -403,7 +403,7 @@ const AdminDashboard: React.FC = () => {
               )}
             </div>
 
-            <button type="submit" className="w-full bg-navy-900 hover:bg-navy-800 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg">
+            <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg">
               Access Dashboard
             </button>
           </form>
@@ -416,7 +416,7 @@ const AdminDashboard: React.FC = () => {
     return (
       <div className="min-h-screen bg-theme-bg flex items-center justify-center px-4">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-navy-900/20 border-t-theme-accent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-theme-accent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-sm text-gray-600 font-medium">Loading...</p>
         </div>
       </div>
@@ -435,12 +435,12 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={handleCancel}
-                    className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 group"
+                    className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1 group"
                   >
                     <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-xs md:text-sm">Back</span>
                   </button>
-                  <h1 className="text-sm md:text-base font-bold text-navy-900">
+                  <h1 className="text-sm md:text-base font-bold text-gray-900">
                     {currentView === 'add' ? '✨ Add New' : '✏️ Edit Product'}
                   </h1>
                 </div>
@@ -452,7 +452,7 @@ const AdminDashboard: React.FC = () => {
                   <button
                     onClick={handleSaveProduct}
                     disabled={isProcessing}
-                    className="bg-gold-600 hover:bg-gold-600/90 text-white px-2 md:px-3 py-1 rounded-md transition-all flex items-center gap-1 shadow-sm hover:shadow disabled:opacity-50 text-xs"
+                    className="bg-gray-600 hover:bg-gray-600/90 text-white px-2 md:px-3 py-1 rounded-md transition-all flex items-center gap-1 shadow-sm hover:shadow disabled:opacity-50 text-xs"
                   >
                     <Save className="h-3 w-3" />
                     {isProcessing ? 'Saving...' : 'Save'}
@@ -592,7 +592,7 @@ const AdminDashboard: React.FC = () => {
               </div>
 
               {/* Complete Set Inclusions */}
-              <div className="bg-gradient-to-r from-gold-50 to-gray-50 border border-gray-200 rounded-lg p-3 md:p-4">
+              <div className="bg-gradient-to-r from-gray-50 to-gray-50 border border-gray-200 rounded-lg p-3 md:p-4">
                 <div className="flex items-center justify-between mb-2 md:mb-3">
                   <h3 className="text-sm md:text-base font-bold text-gray-900 flex items-center gap-1.5">
                     <span className="text-base md:text-lg">📦</span>
@@ -609,7 +609,7 @@ const AdminDashboard: React.FC = () => {
                           setFormData({ ...formData, inclusions: formData.inclusions || [] });
                         }
                       }}
-                      className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600"
+                      className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
                     />
                     <span className="text-xs font-semibold text-gray-700">This is a SET product</span>
                   </label>
@@ -630,7 +630,7 @@ const AdminDashboard: React.FC = () => {
                       rows={6}
                     />
                     <p className="text-xs text-gray-500 mt-2 flex items-start gap-1.5">
-                      <span className="text-gold-600 font-bold">💡</span>
+                      <span className="text-blue-600 font-bold">💡</span>
                       <span>Enter each item on a new line. These will be displayed as a checklist on the product detail page. Check "This is a SET product" above to enable this feature.</span>
                     </p>
                   </div>
@@ -640,7 +640,7 @@ const AdminDashboard: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, inclusions: [] })}
-                      className="text-xs text-gold-600 hover:text-gold-700 font-medium"
+                      className="text-xs text-blue-600 hover:text-blue-700 font-medium"
                     >
                       Enable SET feature
                     </button>
@@ -672,7 +672,7 @@ const AdminDashboard: React.FC = () => {
                         type="checkbox"
                         checked={formData.featured || false}
                         onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                        className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600"
+                        className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
                       />
                       <span className="text-xs font-semibold text-gray-700">⭐ Featured</span>
                     </label>
@@ -715,7 +715,7 @@ const AdminDashboard: React.FC = () => {
                         type="checkbox"
                         checked={formData.discount_active || false}
                         onChange={(e) => setFormData({ ...formData, discount_active: e.target.checked })}
-                        className="w-4 h-4 text-red-600 rounded focus:ring-gold-600"
+                        className="w-4 h-4 text-red-600 rounded focus:ring-blue-500"
                       />
                       <span className="text-xs font-semibold text-gray-700">🏷️ Enable Discount</span>
                     </label>
@@ -774,18 +774,18 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => setCurrentView('dashboard')}
-                    className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 group"
+                    className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1 group"
                   >
                     <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-xs md:text-sm">Dashboard</span>
                   </button>
-                  <h1 className="text-sm md:text-base font-bold text-navy-900">Products</h1>
+                  <h1 className="text-sm md:text-base font-bold text-gray-900">Products</h1>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handleRefresh}
                     disabled={isRefreshing}
-                    className="bg-navy-900 hover:bg-navy-800 text-white px-2 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1 disabled:opacity-50 border border-navy-900/20"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1 disabled:opacity-50 border border-gray-300"
                     title="Refresh data"
                   >
                     <RefreshCw className={`h-3 w-3 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -804,7 +804,7 @@ const AdminDashboard: React.FC = () => {
                   )}
                   <button
                     onClick={handleAddProduct}
-                    className="bg-gold-600 hover:bg-gold-600/90 text-white px-2 md:px-3 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1"
+                    className="bg-gray-600 hover:bg-gray-600/90 text-white px-2 md:px-3 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1"
                   >
                     <Plus className="h-3 w-3" />
                     <span className="hidden sm:inline">Add New</span>
@@ -826,7 +826,7 @@ const AdminDashboard: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setSelectedProducts(new Set())}
-                  className="text-xs text-gold-600 hover:text-gold-700 font-medium underline"
+                  className="text-xs text-blue-600 hover:text-blue-700 font-medium underline"
                 >
                   Clear Selection
                 </button>
@@ -843,7 +843,7 @@ const AdminDashboard: React.FC = () => {
                         type="checkbox"
                         checked={selectedProducts.has(product.id)}
                         onChange={() => toggleSelectProduct(product.id)}
-                        className="mt-0.5 w-4 h-4 text-gold-600 rounded focus:ring-gold-600 cursor-pointer shrink-0"
+                        className="mt-0.5 w-4 h-4 text-blue-600 rounded focus:ring-blue-500 cursor-pointer shrink-0"
                       />
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-bold text-gray-900 truncate">{product.name}</h3>
@@ -860,8 +860,8 @@ const AdminDashboard: React.FC = () => {
                         }}
                         disabled={isProcessing}
                         className={`p - 1.5 rounded - lg transition - all disabled: opacity - 50 disabled: cursor - not - allowed ${product.variations && product.variations.length > 0
-                          ? 'bg-gold-500 text-black hover:bg-gold-600 shadow-md cursor-pointer'
-                          : 'text-gold-600 hover:bg-gray-100 cursor-pointer'
+                          ? 'bg-blue-500 text-black hover:bg-gray-600 shadow-md cursor-pointer'
+                          : 'text-blue-600 hover:bg-gray-100 cursor-pointer'
                           } `}
                         title="Manage Sizes - Click to edit prices!"
                       >
@@ -897,7 +897,7 @@ const AdminDashboard: React.FC = () => {
                       </div>
                       <div>
                         <div className="text-[10px] text-gray-500">Sizes</div>
-                        <div className="text-sm font-semibold text-gold-600">{product.variations?.length || 0}</div>
+                        <div className="text-sm font-semibold text-blue-600">{product.variations?.length || 0}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
@@ -925,7 +925,7 @@ const AdminDashboard: React.FC = () => {
                           type="checkbox"
                           checked={selectedProducts.size === products.length && products.length > 0}
                           onChange={toggleSelectAll}
-                          className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600 cursor-pointer"
+                          className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 cursor-pointer"
                           title="Select All"
                         />
                       </th>
@@ -947,7 +947,7 @@ const AdminDashboard: React.FC = () => {
                             type="checkbox"
                             checked={selectedProducts.has(product.id)}
                             onChange={() => toggleSelectProduct(product.id)}
-                            className="w-4 h-4 text-gold-600 rounded focus:ring-gold-600 cursor-pointer"
+                            className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 cursor-pointer"
                           />
                         </td>
                         <td className="px-4 py-2">
@@ -960,7 +960,7 @@ const AdminDashboard: React.FC = () => {
                         <td className="px-4 py-2 text-xs font-bold text-gray-900">
                           ₱{product.base_price.toLocaleString('en-PH', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                           {product.variations && product.variations.length > 0 && (
-                            <div className="text-[9px] text-gold-600 font-medium mt-0.5">
+                            <div className="text-[9px] text-blue-600 font-medium mt-0.5">
                               Not used (has sizes)
                             </div>
                           )}
@@ -968,11 +968,11 @@ const AdminDashboard: React.FC = () => {
                         <td className="px-4 py-2">
                           {product.variations && product.variations.length > 0 ? (
                             <div>
-                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gold-600">
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-blue-600">
                                 {product.variations.length} {product.variations.length === 1 ? 'size' : 'sizes'}
                               </span>
                               <div className="text-[9px] text-gray-500 mt-0.5">
-                                Click <Layers className="w-2.5 h-2.5 inline text-gold-600" /> to edit
+                                Click <Layers className="w-2.5 h-2.5 inline text-blue-600" /> to edit
                               </div>
                             </div>
                           ) : (
@@ -990,7 +990,7 @@ const AdminDashboard: React.FC = () => {
                         <td className="px-4 py-2 hidden xl:table-cell">
                           <div className="flex flex-col gap-0.5">
                             {product.featured && (
-                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gold-600">
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-blue-600">
                                 ⭐ Featured
                               </span>
                             )}
@@ -1011,8 +1011,8 @@ const AdminDashboard: React.FC = () => {
                               }}
                               disabled={isProcessing}
                               className={`p-1.5 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${product.variations && product.variations.length > 0
-                                ? 'bg-gold-500 text-black hover:bg-gold-600 shadow-md hover:shadow-lg cursor-pointer'
-                                : 'text-gold-600 hover:bg-gray-100 cursor-pointer'
+                                ? 'bg-blue-500 text-black hover:bg-gray-600 shadow-md hover:shadow-lg cursor-pointer'
+                                : 'text-blue-600 hover:bg-gray-100 cursor-pointer'
                                 } `}
                               title="Manage Sizes - Click here to edit prices!"
                             >
@@ -1089,7 +1089,7 @@ const AdminDashboard: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <button
             onClick={() => setCurrentView('dashboard')}
-            className="mb-4 text-gray-600 hover:text-navy-900 flex items-center gap-2"
+            className="mb-4 text-gray-600 hover:text-gray-900 flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
@@ -1129,7 +1129,7 @@ const AdminDashboard: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <button
             onClick={() => setCurrentView('dashboard')}
-            className="mb-4 text-gray-600 hover:text-navy-900 flex items-center gap-2"
+            className="mb-4 text-gray-600 hover:text-gray-900 flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
@@ -1149,7 +1149,7 @@ const AdminDashboard: React.FC = () => {
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between h-14">
               <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-full overflow-hidden border border-navy-900/20">
+                <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-300">
                   <img
                     src="/assets/logo.jpeg"
                     alt="byYOUFORM"
@@ -1170,13 +1170,13 @@ const AdminDashboard: React.FC = () => {
                   href="/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gold-600 transition-colors font-medium text-sm hidden sm:block"
+                  className="text-gray-600 hover:text-blue-600 transition-colors font-medium text-sm hidden sm:block"
                 >
                   View Website
                 </a>
                 <button
                   onClick={handleLogout}
-                  className="bg-navy-900 hover:bg-navy-800 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm shadow-sm"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm shadow-sm"
                 >
                   Logout
                 </button>
@@ -1189,7 +1189,7 @@ const AdminDashboard: React.FC = () => {
 
           {/* Inventory Stats */}
           <div className="mb-6">
-            <h2 className="text-xl font-bold text-navy-900 flex items-center gap-2 mb-4">
+            <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2 mb-4">
               <Calendar className="w-5 h-5" />
               Inventory Overview
             </h2>
@@ -1199,8 +1199,8 @@ const AdminDashboard: React.FC = () => {
                 className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-gold-600/10 rounded-lg">
-                    <Package className="h-4 w-4 text-gold-600" />
+                  <div className="p-2 bg-gray-600/10 rounded-lg">
+                    <Package className="h-4 w-4 text-blue-600" />
                   </div>
                   <div className="ml-3">
                     <p className="text-xs font-medium text-gray-500">Total Products</p>
@@ -1229,12 +1229,12 @@ const AdminDashboard: React.FC = () => {
                 className="bg-white rounded-xl shadow-soft hover:shadow-md transition-all p-4 border border-gray-100 text-left cursor-pointer"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-gold-500/10 rounded-lg">
-                    <Sparkles className="h-4 w-4 text-gold-500" />
+                  <div className="p-2 bg-blue-500/10 rounded-lg">
+                    <Sparkles className="h-4 w-4 text-blue-500" />
                   </div>
                   <div className="ml-3">
                     <p className="text-xs font-medium text-gray-500">Featured</p>
-                    <p className="text-xl font-bold text-gold-500">{featuredProducts}</p>
+                    <p className="text-xl font-bold text-blue-500">{featuredProducts}</p>
                   </div>
                 </div>
               </button>
@@ -1268,18 +1268,18 @@ const AdminDashboard: React.FC = () => {
                   className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
                 >
                   <div className="p-1.5 bg-navy-50 rounded-lg">
-                    <Plus className="h-4 w-4 text-navy-900" />
+                    <Plus className="h-4 w-4 text-gray-900" />
                   </div>
-                  <span className="text-sm font-medium text-navy-900">Add New Product</span>
+                  <span className="text-sm font-medium text-gray-900">Add New Product</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('products')}
                   className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
                 >
                   <div className="p-1.5 bg-navy-50 rounded-lg">
-                    <Package className="h-4 w-4 text-navy-900" />
+                    <Package className="h-4 w-4 text-gray-900" />
                   </div>
-                  <span className="text-sm font-medium text-navy-900">Manage Products</span>
+                  <span className="text-sm font-medium text-gray-900">Manage Products</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('categories')}
@@ -1313,9 +1313,9 @@ const AdminDashboard: React.FC = () => {
                   className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
                 >
                   <div className="p-1.5 bg-navy-50 rounded-lg">
-                    <ShoppingCart className="h-4 w-4 text-navy-900" />
+                    <ShoppingCart className="h-4 w-4 text-gray-900" />
                   </div>
-                  <span className="text-sm font-medium text-navy-900">Orders Management</span>
+                  <span className="text-sm font-medium text-gray-900">Orders Management</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('shipping')}
@@ -1331,18 +1331,18 @@ const AdminDashboard: React.FC = () => {
                   className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
                 >
                   <div className="p-1.5 bg-navy-50 rounded-lg">
-                    <Shield className="h-4 w-4 text-navy-900" />
+                    <Shield className="h-4 w-4 text-gray-900" />
                   </div>
-                  <span className="text-sm font-medium text-navy-900">Lab Results (COA)</span>
+                  <span className="text-sm font-medium text-gray-900">Lab Results (COA)</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('faq')}
                   className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
                 >
                   <div className="p-1.5 bg-navy-50 rounded-lg">
-                    <HelpCircle className="h-4 w-4 text-navy-900" />
+                    <HelpCircle className="h-4 w-4 text-gray-900" />
                   </div>
-                  <span className="text-sm font-medium text-navy-900">Manage FAQ</span>
+                  <span className="text-sm font-medium text-gray-900">Manage FAQ</span>
                 </button>
                 <button
                   onClick={() => setCurrentView('promo-codes')}
@@ -1381,8 +1381,8 @@ const AdminDashboard: React.FC = () => {
               <div className="space-y-2">
                 {categoryCounts.map((category, index) => {
                   const bgColors = [
-                    'bg-gold-600',
-                    'bg-gold-500',
+                    'bg-gray-600',
+                    'bg-blue-500',
                     'bg-blue-500',
                     'bg-green-500',
                     'bg-purple-500',

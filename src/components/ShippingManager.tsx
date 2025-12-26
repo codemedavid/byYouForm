@@ -81,24 +81,24 @@ const ShippingManager: React.FC<ShippingManagerProps> = ({ onBack }) => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white">
             {/* Header */}
-            <div className="bg-white shadow-md border-b border-navy-700/30">
+            <div className="bg-white shadow-md border-b border-gray-300">
                 <div className="max-w-4xl mx-auto px-3 sm:px-4">
                     <div className="flex items-center justify-between h-12 md:h-14">
                         <div className="flex items-center space-x-2">
                             <button
                                 onClick={onBack}
-                                className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 group"
+                                className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1 group"
                             >
                                 <span className="text-xs md:text-sm">← Dashboard</span>
                             </button>
-                            <h1 className="text-sm md:text-base font-bold text-navy-900 flex items-center gap-2">
-                                <MapPin className="w-4 h-4 text-gold-500" />
+                            <h1 className="text-sm md:text-base font-bold text-gray-900 flex items-center gap-2">
+                                <MapPin className="w-4 h-4 text-blue-500" />
                                 Shipping Locations
                             </h1>
                         </div>
                         <button
                             onClick={() => setIsAdding(true)}
-                            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-black px-3 py-1.5 rounded-md font-medium text-xs shadow-sm flex items-center gap-1"
+                            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-black px-3 py-1.5 rounded-md font-medium text-xs shadow-sm flex items-center gap-1"
                         >
                             <Plus className="w-3 h-3" />
                             Add New

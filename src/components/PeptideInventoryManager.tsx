@@ -232,7 +232,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-gray-200 border-t-gold-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600 font-medium">Loading inventory... ✨</p>
         </div>
       </div>
@@ -248,12 +248,12 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
             <div className="flex items-center space-x-2">
               <button
                 onClick={onBack}
-                className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 group"
+                className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1 group"
               >
                 <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs md:text-sm">Dashboard</span>
               </button>
-              <h1 className="text-sm md:text-base font-bold text-navy-900">
+              <h1 className="text-sm md:text-base font-bold text-gray-900">
                 Peptide Inventory
               </h1>
             </div>
@@ -274,20 +274,20 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
           {/* Total Sales Income */}
-          <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 border border-navy-700/30">
+          <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 border border-gray-300">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-xs md:text-sm font-medium text-gray-600">Total Sales Income</h3>
-              <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-gold-600" />
+              <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
             </div>
             <p className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">₱{stats.totalSales.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
             <p className="text-xs text-gray-500 mt-1">Vials Sold: {stats.totalVialsSold}</p>
           </div>
 
           {/* Inventory Value */}
-          <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 border border-navy-700/30">
+          <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 border border-gray-300">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-xs md:text-sm font-medium text-gray-600">Inventory Value</h3>
-              <Package className="w-4 h-4 md:w-5 md:h-5 text-gold-600" />
+              <Package className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
             </div>
             <p className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">₱{stats.totalInventoryValue.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
             <p className="text-xs text-gray-500 mt-1">Total Items: {stats.totalItems}</p>
@@ -296,7 +296,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
           {/* Low Stock - Clickable */}
           <button
             onClick={() => setSelectedFilter(selectedFilter === 'low-stock' ? 'all' : 'low-stock')}
-            className={`bg-gradient-to-br from-gold-500 to-gold-600 rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 text-black border-2 transition-all text-left w-full ${selectedFilter === 'low-stock' ? 'border-navy-900 ring-2 ring-navy-900/30' : 'border-gold-700 hover:border-gold-800'
+            className={`bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg md:rounded-xl shadow-lg p-4 md:p-5 text-black border-2 transition-all text-left w-full ${selectedFilter === 'low-stock' ? 'border-navy-900 ring-2 ring-navy-900/30' : 'border-blue-700 hover:border-blue-800'
               }`}
           >
             <div className="flex items-center justify-between mb-2">
@@ -311,7 +311,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-3 md:p-4 mb-4 md:mb-6 border border-navy-700/30">
+        <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-3 md:p-4 mb-4 md:mb-6 border border-gray-300">
           <div className="flex flex-col md:flex-row gap-2 md:gap-3">
             <div className="flex-1 relative">
               <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -320,13 +320,13 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
                 placeholder="Search by name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 md:py-2 text-sm border border-gray-300 rounded-md focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-gold-500 transition-colors"
+                className="w-full pl-9 pr-3 py-1.5 md:py-2 text-sm border border-gray-300 rounded-md focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
               />
             </div>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-1.5 md:py-2 text-sm border border-gray-300 rounded-md focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-gold-500 bg-white transition-colors"
+              className="px-3 py-1.5 md:py-2 text-sm border border-gray-300 rounded-md focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white transition-colors"
             >
               <option value="all">All Categories</option>
               {categories.map(cat => (
@@ -336,7 +336,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
             <select
               value={selectedFilter}
               onChange={(e) => setSelectedFilter(e.target.value)}
-              className="px-3 py-1.5 md:py-2 text-sm border border-gray-300 rounded-md focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-gold-500 bg-white transition-colors"
+              className="px-3 py-1.5 md:py-2 text-sm border border-gray-300 rounded-md focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white transition-colors"
             >
               <option value="all">All Items</option>
               <option value="in-stock">In Stock</option>
@@ -346,7 +346,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="bg-navy-900 hover:bg-navy-800 text-white px-3 py-1.5 md:py-2 rounded-md font-medium text-xs md:text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 border border-navy-900/20"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 md:py-2 rounded-md font-medium text-xs md:text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 border border-gray-300"
             >
               <RefreshCw className={`w-3 h-3 md:w-4 md:h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               <span className="hidden sm:inline">Refresh</span>
@@ -357,7 +357,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
         {/* Inventory List */}
         <div className="space-y-4">
           {filteredProducts.length === 0 ? (
-            <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-8 md:p-12 text-center border border-navy-700/30">
+            <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-8 md:p-12 text-center border border-gray-300">
               <Package className="w-12 h-12 md:w-16 md:h-16 text-gray-400 mx-auto mb-4" />
               <p className="text-gray-600 font-medium text-base md:text-lg">No products found</p>
               <p className="text-gray-500 text-xs md:text-sm mt-2">Try adjusting your search or filters</p>
@@ -406,7 +406,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
           return (
             <div
               key={variation.id}
-              className="bg-white rounded-lg md:rounded-xl shadow-md p-3 md:p-4 border border-navy-700/30 hover:border-navy-900/50 transition-all"
+              className="bg-white rounded-lg md:rounded-xl shadow-md p-3 md:p-4 border border-gray-300 hover:border-navy-900/50 transition-all"
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
                 <div className="flex-1">
@@ -436,7 +436,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
                     </div>
                     <div>
                       <span className="text-gray-500 text-[10px] md:text-xs">Total Value</span>
-                      <p className="font-semibold text-gold-600">
+                      <p className="font-semibold text-blue-600">
                         ₱{(variation.stock_quantity * variation.price).toLocaleString('en-PH', { minimumFractionDigits: 2 })}
                       </p>
                     </div>
@@ -454,7 +454,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
                         type="number"
                         value={currentStock}
                         onChange={(e) => setEditStock({ ...editStock, [stockKey]: parseInt(e.target.value) || 0 })}
-                        className="w-16 md:w-20 px-2 py-1 text-xs md:text-sm border border-gray-300 rounded text-center focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-gold-500"
+                        className="w-16 md:w-20 px-2 py-1 text-xs md:text-sm border border-gray-300 rounded text-center focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         min="0"
                       />
                       <button
@@ -484,7 +484,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
                           setIsEditing(true);
                           setEditStock({ [stockKey]: variation.stock_quantity });
                         }}
-                        className="flex-1 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-black rounded-md font-medium flex items-center justify-center gap-1.5 text-xs md:text-sm transition-colors"
+                        className="flex-1 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-black rounded-md font-medium flex items-center justify-center gap-1.5 text-xs md:text-sm transition-colors"
                       >
                         <Edit className="w-3 h-3 md:w-4 md:h-4" />
                         Edit
@@ -518,7 +518,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
     : product.base_price;
 
   return (
-    <div className="bg-white rounded-lg md:rounded-xl shadow-md p-3 md:p-4 border border-navy-700/30 hover:border-navy-900/50 transition-all">
+    <div className="bg-white rounded-lg md:rounded-xl shadow-md p-3 md:p-4 border border-gray-300 hover:border-navy-900/50 transition-all">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -545,7 +545,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
             </div>
             <div>
               <span className="text-gray-500 text-[10px] md:text-xs">Total Value</span>
-              <p className="font-semibold text-gold-600">
+              <p className="font-semibold text-blue-600">
                 ₱{(product.stock_quantity * price).toLocaleString('en-PH', { minimumFractionDigits: 2 })}
               </p>
             </div>
@@ -563,7 +563,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
                 type="number"
                 value={currentStock}
                 onChange={(e) => setEditStock({ ...editStock, [stockKey]: parseInt(e.target.value) || 0 })}
-                className="w-16 md:w-20 px-2 py-1 text-xs md:text-sm border border-gray-300 rounded text-center focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-gold-500"
+                className="w-16 md:w-20 px-2 py-1 text-xs md:text-sm border border-gray-300 rounded text-center focus:border-navy-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 min="0"
               />
               <button
@@ -593,7 +593,7 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
                   setIsEditing(true);
                   setEditStock({ [stockKey]: product.stock_quantity });
                 }}
-                className="flex-1 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-black rounded-md font-medium flex items-center justify-center gap-1.5 text-xs md:text-sm transition-colors"
+                className="flex-1 px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-black rounded-md font-medium flex items-center justify-center gap-1.5 text-xs md:text-sm transition-colors"
               >
                 <Edit className="w-3 h-3 md:w-4 md:h-4" />
                 Edit

@@ -128,7 +128,7 @@ const PromoCodeManager: React.FC = () => {
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                    <Tag className="w-6 h-6 text-navy-900" />
+                    <Tag className="w-6 h-6 text-gray-900" />
                     Promo Codes
                 </h2>
                 <button
@@ -174,7 +174,7 @@ const PromoCodeManager: React.FC = () => {
                             ) : (
                                 filteredCodes.map(code => (
                                     <tr key={code.id} className="hover:bg-gray-50/50 transition-colors">
-                                        <td className="px-6 py-4 font-bold text-navy-900">{code.code}</td>
+                                        <td className="px-6 py-4 font-bold text-gray-900">{code.code}</td>
                                         <td className="px-6 py-4">
                                             {code.discount_type === 'percentage'
                                                 ? `${code.discount_value}% OFF`

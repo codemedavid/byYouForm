@@ -294,7 +294,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'new': return 'bg-gold-100 text-gold-800 border-navy-700';
+      case 'new': return 'bg-blue-100 text-gray-800 border-navy-700';
       case 'confirmed': return 'bg-gray-100 text-gray-800 border-gray-300';
       case 'processing': return 'bg-gray-100 text-gray-800 border-gray-300';
       case 'shipped': return 'bg-gray-100 text-gray-800 border-gray-300';
@@ -320,7 +320,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-gray-200 border-t-gold-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600 font-medium">Loading orders... ✨</p>
         </div>
       </div>
@@ -349,19 +349,19 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
             <div className="flex items-center space-x-2 md:space-x-4 min-w-0 flex-1">
               <button
                 onClick={onBack}
-                className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 md:gap-2 group"
+                className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1 md:gap-2 group"
               >
                 <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs md:text-sm">Dashboard</span>
               </button>
-              <h1 className="text-sm md:text-base lg:text-xl font-bold text-navy-900 truncate">
+              <h1 className="text-sm md:text-base lg:text-xl font-bold text-gray-900 truncate">
                 Orders Management
               </h1>
             </div>
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="bg-navy-900 hover:bg-navy-800 text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl font-medium text-xs md:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1 md:gap-2 disabled:opacity-50 border border-navy-900/20"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl font-medium text-xs md:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1 md:gap-2 disabled:opacity-50 border border-gray-300"
             >
               <RefreshCw className={`w-3 h-3 md:w-4 md:h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               <span className="hidden sm:inline">Refresh</span>
@@ -375,7 +375,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 md:gap-3 mb-4 md:mb-6">
           <button
             onClick={() => setStatusFilter('all')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'all' ? 'border-navy-900 shadow-gold-glow' : 'border-gray-200 hover:border-navy-700'
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'all' ? 'border-navy-900 shadow-blue-glow' : 'border-gray-200 hover:border-navy-700'
               }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">All Orders</p>
@@ -383,15 +383,15 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
           </button>
           <button
             onClick={() => setStatusFilter('new')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'new' ? 'border-navy-900 shadow-gold-glow' : 'border-gray-200 hover:border-navy-700'
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'new' ? 'border-navy-900 shadow-blue-glow' : 'border-gray-200 hover:border-navy-700'
               }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">New</p>
-            <p className="text-lg md:text-xl lg:text-2xl font-bold text-gold-600">{statusCounts.new}</p>
+            <p className="text-lg md:text-xl lg:text-2xl font-bold text-blue-600">{statusCounts.new}</p>
           </button>
           <button
             onClick={() => setStatusFilter('confirmed')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'confirmed' ? 'border-navy-900 shadow-gold-glow' : 'border-gray-200 hover:border-navy-700'
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'confirmed' ? 'border-navy-900 shadow-blue-glow' : 'border-gray-200 hover:border-navy-700'
               }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Confirmed</p>
@@ -399,7 +399,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
           </button>
           <button
             onClick={() => setStatusFilter('processing')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'processing' ? 'border-navy-900 shadow-gold-glow' : 'border-gray-200 hover:border-navy-700'
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'processing' ? 'border-navy-900 shadow-blue-glow' : 'border-gray-200 hover:border-navy-700'
               }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Processing</p>
@@ -407,7 +407,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
           </button>
           <button
             onClick={() => setStatusFilter('shipped')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'shipped' ? 'border-navy-900 shadow-gold-glow' : 'border-gray-200 hover:border-navy-700'
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'shipped' ? 'border-navy-900 shadow-blue-glow' : 'border-gray-200 hover:border-navy-700'
               }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Shipped</p>
@@ -415,7 +415,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
           </button>
           <button
             onClick={() => setStatusFilter('delivered')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'delivered' ? 'border-navy-900 shadow-gold-glow' : 'border-gray-200 hover:border-navy-700'
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'delivered' ? 'border-navy-900 shadow-blue-glow' : 'border-gray-200 hover:border-navy-700'
               }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Delivered</p>
@@ -432,7 +432,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
         </div>
 
         {/* Search */}
-        <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-3 md:p-4 lg:p-6 mb-4 md:mb-6 border border-navy-700/30">
+        <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-3 md:p-4 lg:p-6 mb-4 md:mb-6 border border-gray-300">
           <div className="flex flex-col md:flex-row gap-3 md:gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 md:w-5 md:h-5" />
@@ -441,7 +441,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
                 placeholder="Search by customer name, email, phone, or order ID..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 md:pl-10 pr-3 md:pr-4 py-2 text-sm md:text-base border-2 border-gray-200 rounded-lg focus:border-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-colors"
+                className="w-full pl-9 md:pl-10 pr-3 md:pr-4 py-2 text-sm md:text-base border-2 border-gray-200 rounded-lg focus:border-navy-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
               />
             </div>
           </div>
@@ -450,7 +450,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
         {/* Orders List */}
         <div className="space-y-3 md:space-y-4">
           {filteredOrders.length === 0 ? (
-            <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-8 md:p-12 text-center border border-navy-700/30">
+            <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-8 md:p-12 text-center border border-gray-300">
               <Package className="w-12 h-12 md:w-16 md:h-16 text-gray-400 mx-auto mb-4" />
               <p className="text-gray-600 font-medium text-base md:text-lg">No orders found</p>
               <p className="text-gray-500 text-sm mt-2">Try adjusting your filters</p>
@@ -485,7 +485,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onView, getStatusColor, ge
   const finalTotal = order.total_price + (order.shipping_fee || 0);
 
   return (
-    <div className="bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-3 md:p-4 lg:p-6 border border-navy-700/30 hover:border-navy-900 transition-all">
+    <div className="bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-3 md:p-4 lg:p-6 border border-gray-300 hover:border-navy-900 transition-all">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 md:gap-3 mb-2 flex-wrap">
@@ -497,7 +497,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onView, getStatusColor, ge
               <span className="hidden sm:inline">{order.order_status.charAt(0).toUpperCase() + order.order_status.slice(1)}</span>
               <span className="sm:hidden">{order.order_status.charAt(0).toUpperCase()}</span>
             </span>
-            <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-semibold ${order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gold-100 text-gold-700'
+            <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-semibold ${order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
               }`}>
               {order.payment_status === 'paid' ? '✓ Paid' : 'Pending'}
             </span>
@@ -516,7 +516,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onView, getStatusColor, ge
             </div>
             <div>
               <span className="text-gray-500 text-[10px] md:text-xs">Total</span>
-              <p className="font-semibold text-gold-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</p>
+              <p className="font-semibold text-blue-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</p>
               {order.shipping_fee && order.shipping_fee > 0 && (
                 <p className="text-[10px] md:text-xs text-gray-500">+ ₱{order.shipping_fee} shipping</p>
               )}
@@ -532,7 +532,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onView, getStatusColor, ge
         <div className="flex flex-col gap-2 md:min-w-[120px]">
           <button
             onClick={onView}
-            className="px-3 md:px-4 py-1.5 md:py-2 bg-navy-900 hover:bg-navy-800 text-white rounded-lg transition-colors font-medium text-xs md:text-sm flex items-center justify-center gap-1 md:gap-2 shadow-md hover:shadow-lg border border-navy-900/20"
+            className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium text-xs md:text-sm flex items-center justify-center gap-1 md:gap-2 shadow-md hover:shadow-lg border border-gray-300"
           >
             <Eye className="w-3 h-3 md:w-4 md:h-4" />
             <span className="hidden sm:inline">View Details</span>
@@ -575,18 +575,18 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white">
-      <div className="bg-white shadow-md border-b border-navy-700/30">
+      <div className="bg-white shadow-md border-b border-gray-300">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-12 md:h-14 gap-2">
             <div className="flex items-center space-x-2 md:space-x-4 min-w-0 flex-1">
               <button
                 onClick={onBack}
-                className="text-gray-700 hover:text-gold-600 transition-colors flex items-center gap-1 md:gap-2 group"
+                className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1 md:gap-2 group"
               >
                 <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs md:text-sm">Back to Orders</span>
               </button>
-              <h1 className="text-sm md:text-base lg:text-xl font-bold text-navy-900 truncate">
+              <h1 className="text-sm md:text-base lg:text-xl font-bold text-gray-900 truncate">
                 Order #{order.id.slice(0, 8).toUpperCase()}
               </h1>
             </div>
@@ -595,11 +595,11 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
       </div>
 
       <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-6 py-4 md:py-6 lg:py-8">
-        <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-6 border border-navy-700/30 space-y-4 md:space-y-6">
+        <div className="bg-white rounded-lg md:rounded-xl shadow-lg p-4 md:p-6 border border-gray-300 space-y-4 md:space-y-6">
           {/* Order Status */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4">
             <div>
-              <span className={`inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border ${order.order_status === 'new' ? 'bg-gold-100 text-gold-800 border-navy-700' :
+              <span className={`inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border ${order.order_status === 'new' ? 'bg-blue-100 text-gray-800 border-navy-700' :
                 order.order_status === 'confirmed' ? 'bg-gray-100 text-gray-800 border-gray-300' :
                   order.order_status === 'processing' ? 'bg-gray-100 text-gray-800 border-gray-300' :
                     order.order_status === 'shipped' ? 'bg-gray-100 text-gray-800 border-gray-300' :
@@ -632,7 +632,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
               {order.contact_method && (
                 <p className="flex items-center gap-2 flex-wrap">
                   <span className="font-semibold">Contact Method:</span>
-                  <span className="flex items-center gap-1 text-green-600"><MessageCircle className="w-3 h-3 md:w-4 md:h-4" /> WhatsApp</span>
+                  <span className="flex items-center gap-1 text-blue-600"><MessageCircle className="w-3 h-3 md:w-4 md:h-4" /> Telegram</span>
                 </p>
               )}
             </div>
@@ -656,7 +656,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
 
           {/* Shipping & Tracking Details (Editable) */}
           <div className="bg-blue-50 rounded-lg md:rounded-xl p-4 md:p-6 border border-blue-100">
-            <h3 className="font-bold text-navy-900 mb-4 flex items-center gap-2">
+            <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Truck className="w-5 h-5 text-blue-600" />
               Shipping & Tracking Details
             </h3>
@@ -762,7 +762,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
             <div className="bg-gray-50 rounded-lg p-3 md:p-4 space-y-1.5 md:space-y-2 text-xs md:text-sm">
               <p><span className="font-semibold">Method:</span> {order.payment_method_name || 'N/A'}</p>
               <p className="flex items-center gap-2 flex-wrap"><span className="font-semibold">Status:</span>
-                <span className={`px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold ${order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gold-100 text-gold-700'
+                <span className={`px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold ${order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
                   }`}>
                   {order.payment_status === 'paid' ? 'Paid' : 'Pending'}
                 </span>
@@ -785,7 +785,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
               )}
               <div className="flex justify-between text-base md:text-lg font-bold border-t-2 border-gray-200 pt-2">
                 <span>Total:</span>
-                <span className="text-gold-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</span>
+                <span className="text-blue-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 2 })}</span>
               </div>
             </div>
           </div>
@@ -809,7 +809,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
                   <button
                     onClick={() => onUpdateStatus(order.id, 'processing')}
                     disabled={isProcessing}
-                    className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-black text-white rounded-lg transition-colors disabled:opacity-50 text-xs md:text-sm font-medium shadow-md hover:shadow-lg border border-navy-900/20"
+                    className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-black text-white rounded-lg transition-colors disabled:opacity-50 text-xs md:text-sm font-medium shadow-md hover:shadow-lg border border-gray-300"
                   >
                     Mark as Processing
                   </button>
@@ -818,7 +818,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
                   <button
                     onClick={() => onUpdateStatus(order.id, 'shipped')}
                     disabled={isProcessing}
-                    className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-black text-white rounded-lg transition-colors disabled:opacity-50 text-xs md:text-sm font-medium shadow-md hover:shadow-lg border border-navy-900/20"
+                    className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-black text-white rounded-lg transition-colors disabled:opacity-50 text-xs md:text-sm font-medium shadow-md hover:shadow-lg border border-gray-300"
                   >
                     Mark as Shipped
                   </button>
