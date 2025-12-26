@@ -16,22 +16,72 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
 
   return (
     <div className="relative bg-luxury-black overflow-hidden min-h-[85vh] flex items-center">
-      {/* Background Effects */}
+      {/* Background Effects - Layered for Depth */}
       <div className="absolute inset-0">
-        {/* Subtle gold gradient orbs */}
-        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-gold-400/3 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-400/2 rounded-full blur-3xl" />
+        {/* Base gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-luxury-black via-luxury-charcoal/50 to-luxury-black" />
 
-        {/* Subtle grid pattern */}
+        {/* Gold gradient orbs */}
+        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-gold-400/8 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-gold-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold-400/3 rounded-full blur-3xl" />
+
+        {/* Silver/platinum accent orbs */}
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gray-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
+        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-gray-300/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s' }} />
+
+        {/* Diagonal gold lines - subtle accent */}
         <div
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `linear-gradient(rgba(212, 175, 55, 0.3) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(212, 175, 55, 0.3) 1px, transparent 1px)`,
-            backgroundSize: '100px 100px'
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 100px,
+              rgba(212, 175, 55, 0.4) 100px,
+              rgba(212, 175, 55, 0.4) 101px
+            )`
           }}
         />
+
+        {/* Grid pattern - gold and silver mix */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(212, 175, 55, 0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(212, 175, 55, 0.5) 1px, transparent 1px),
+              linear-gradient(rgba(192, 192, 192, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(192, 192, 192, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px, 80px 80px, 40px 40px, 40px 40px'
+          }}
+        />
+
+        {/* Radial gradient spotlight */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%)'
+          }}
+        />
+
+        {/* Corner accents */}
+        <div className="absolute top-0 left-0 w-64 h-64 border-l border-t border-gold-400/10" />
+        <div className="absolute top-0 right-0 w-64 h-64 border-r border-t border-gold-400/10" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 border-l border-b border-gold-400/10" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 border-r border-b border-gold-400/10" />
+
+        {/* Floating particles */}
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-gold-400/40 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-gold-400/30 rounded-full animate-pulse" style={{ animationDuration: '3s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-gray-400/40 rounded-full animate-pulse" style={{ animationDuration: '2.5s' }} />
+        <div className="absolute top-2/3 right-1/4 w-0.5 h-0.5 bg-gold-400/50 rounded-full animate-pulse" style={{ animationDuration: '1.8s' }} />
+        <div className="absolute bottom-1/3 left-1/5 w-1 h-1 bg-gray-300/30 rounded-full animate-pulse" style={{ animationDuration: '4s' }} />
+
+        {/* Horizontal accent lines */}
+        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/10 to-transparent" />
+        <div className="absolute bottom-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/10 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32 relative z-10 w-full">
