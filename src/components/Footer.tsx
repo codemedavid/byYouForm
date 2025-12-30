@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               Peptalk
             </a>
             <a
-              href="https://t.me/+fGtShIUkbB84YzZl"
+              href="https://t.me/+KLV9YUAhUFQwZDI1"
               target="_blank"
               rel="noopener noreferrer"
               className="text-luxury-cream/60 hover:text-gold-400 transition-colors flex items-center gap-2 text-sm font-medium tracking-wide"
