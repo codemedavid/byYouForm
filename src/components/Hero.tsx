@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Dna, Shield, Sparkles } from 'lucide-react';
-import { useSiteSettings } from '../hooks/useSiteSettings';
 
 interface HeroProps {
   onShopAll: () => void;
@@ -8,7 +7,6 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { siteSettings } = useSiteSettings();
 
   useEffect(() => {
     setIsVisible(true);
@@ -125,10 +123,10 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
               </button>
 
               <a
-                href="/calculator"
+                href="/assessment"
                 className="px-10 py-4 bg-transparent text-gold-400 border border-gold-400 rounded-sm font-semibold hover:bg-gold-400/10 transition-all tracking-wide flex items-center justify-center gap-2"
               >
-                Peptide Calculator
+                Start Assessment
               </a>
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCOAPageSetting } from '../hooks/useCOAPageSetting';
-import { ShoppingCart, Menu, X, MessageCircle, Calculator, FileText, HelpCircle, Truck, BookOpen } from 'lucide-react';
+import { ShoppingCart, Menu, X, MessageCircle, Calculator, FileText, HelpCircle, Truck, BookOpen, ClipboardCheck } from 'lucide-react';
 
 interface HeaderProps {
   cartItemsCount: number;
@@ -53,6 +53,13 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
                 >
                   Products
                 </button>
+                <a
+                  href="/assessment"
+                  className="text-sm font-medium text-gold-400 hover:text-gold-300 transition-colors flex items-center gap-1.5 tracking-wide"
+                >
+                  <ClipboardCheck className="w-4 h-4" />
+                  Assessment
+                </a>
                 <a
                   href="/track-order"
                   className="text-sm font-medium text-luxury-cream/80 hover:text-gold-400 transition-colors flex items-center gap-1.5 tracking-wide"
@@ -171,6 +178,15 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
                   </div>
                   <span className="tracking-wide">Products</span>
                 </button>
+                <a
+                  href="/assessment"
+                  className="flex items-center gap-4 p-4 rounded-sm text-left font-medium text-luxury-cream/80 hover:bg-gold-400/10 hover:text-gold-400 transition-all group"
+                >
+                  <div className="p-2 rounded-sm bg-gold-400/10 group-hover:bg-gold-400/20 transition-all">
+                    <ClipboardCheck className="w-5 h-5 text-gold-400" />
+                  </div>
+                  <span className="tracking-wide">Assessment <span className="text-xs bg-gold-400/20 text-gold-400 px-2 py-0.5 rounded-full ml-2">NEW</span></span>
+                </a>
                 <a
                   href="/track-order"
                   className="flex items-center gap-4 p-4 rounded-sm text-left font-medium text-luxury-cream/80 hover:bg-gold-400/10 hover:text-gold-400 transition-all group"

@@ -15,6 +15,8 @@ import PeptideCalculator from './components/PeptideCalculator';
 import OrderTracking from './components/OrderTracking';
 import SmartGuide from './components/SmartGuide';
 import ArticleDetail from './components/ArticleDetail';
+import PeptideAssessment from './components/PeptideAssessment';
+import TermsAndConditions from './components/TermsAndConditions';
 import { useMenu } from './hooks/useMenu';
 // import { useCOAPageSetting } from './hooks/useCOAPageSetting';
 
@@ -109,6 +111,8 @@ function App() {
         <Route path="/track-order" element={<OrderTracking />} />
         <Route path="/peptalk" element={<SmartGuide />} />
         <Route path="/peptalk/:id" element={<ArticleDetail />} />
+        <Route path="/assessment" element={<PeptideAssessment />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </Router>

@@ -15,8 +15,9 @@ import ShippingManager from './ShippingManager';
 import SiteSettingsManager from './SiteSettingsManager';
 import PromoCodeManager from './PromoCodeManager';
 import GuideManager from './GuideManager';
+import AssessmentManager from './AssessmentManager';
 
-import { Calendar } from 'lucide-react';
+import { Calendar, ClipboardList } from 'lucide-react';
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('peptide_admin_auth') === 'true';
@@ -25,7 +26,7 @@ const AdminDashboard: React.FC = () => {
   const [loginError, setLoginError] = useState('');
   const { products, loading, addProduct, updateProduct, deleteProduct, refreshProducts } = useMenu();
   const { categories } = useCategories();
-  const [currentView, setCurrentView] = useState<'dashboard' | 'products' | 'add' | 'edit' | 'categories' | 'payments' | 'inventory' | 'orders' | 'shipping' | 'coa' | 'faq' | 'settings' | 'promo-codes' | 'guides'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'products' | 'add' | 'edit' | 'categories' | 'payments' | 'inventory' | 'orders' | 'shipping' | 'coa' | 'faq' | 'settings' | 'promo-codes' | 'guides' | 'assessments'>('dashboard');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [managingVariationsProductId, setManagingVariationsProductId] = useState<string | null>(null);
@@ -1105,6 +1106,11 @@ const AdminDashboard: React.FC = () => {
     return <GuideManager />;
   }
 
+  // Assessment View
+  if (currentView === 'assessments') {
+    return <AssessmentManager onBack={() => setCurrentView('dashboard')} />;
+  }
+
   // Settings View
   if (currentView === 'settings') {
     // SiteSettingsManager doesn't seem to have onBack prop based on earlier view_file, 
@@ -1370,6 +1376,15 @@ const AdminDashboard: React.FC = () => {
                     <Settings className="h-4 w-4 text-gray-700" />
                   </div>
                   <span className="text-sm font-medium text-gray-900">Site Settings</span>
+                </button>
+                <button
+                  onClick={() => setCurrentView('assessments')}
+                  className="w-full flex items-center gap-3 p-2 text-left hover:bg-gray-50 rounded-lg transition-all"
+                >
+                  <div className="p-1.5 bg-cyan-50 rounded-lg">
+                    <ClipboardList className="h-4 w-4 text-cyan-600" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-900">Assessments</span>
                 </button>
               </div>
             </div>
